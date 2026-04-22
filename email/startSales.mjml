@@ -1,0 +1,17 @@
+<mjml>
+  <mj-head>
+    <mj-title>Старт продаж</mj-title>
+    <mj-include path="./_head.mjml" />
+  </mj-head>
+  <mj-body mj-class="body">
+    <mj-include path="./_header.mjml" />
+    <mj-section mj-class="content">
+      <mj-column>
+        <mj-text mj-class="h1">Старт продаж билетов!</mj-text>
+        <mj-text mj-class="text">Началась продажа билетов <br> 
+        их можно переобрести на сайте нашего партера</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-include path="./_footer.mjml" />
+  </mj-body>
+</mjml>
