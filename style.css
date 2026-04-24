@@ -1,3 +1,5 @@
+/* ————————————— general class ————————————— */
+
 * {
     box-sizing: border-box
 }
@@ -22,6 +24,7 @@ body {
     padding: 0;
 }
 
+/* ————————————— castom class ————————————— */
 
 .content {
     position: relative;
@@ -40,15 +43,6 @@ body {
     
 }
 
-@media (max-width: 768px) {
-    .content {
-    width: auto;
-    margin: 0 20px 0 20px;
-    color: red;
-    }
-    
-}
-
 .bg-video {
     position: absolute;
     top: 50%;
@@ -63,20 +57,35 @@ body {
     z-index: -1;
 }
 
+/* ————————————— email-form ————————————— */
+
 .email-form {
+    background-color: black;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
-    margin: 0 0 10vw 0;    
+    width: 350px;
+    gap: 10px;
+    padding: 20px;
+    margin: 0 0 5vw 0;    
 }
 
 .email-form button {
-    height: auto;
+    border: none;
+    /* height: auto; */
+    width: 100%;
     padding: 10px 20px; 
     border-radius: 100px;
     text-wrap: nowrap;
 
+}
+
+.email-form button:hover {
+    border: none;
+    background-color: blue;
+    color: white;
 }
 
 .email-form label {
@@ -89,21 +98,59 @@ body {
 
 
 input[type="email"] {
-    font-size: 1.5em;
+    color: white;
+
+    font-size: 1.2em;
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid white;
-/*  border-bottom: 2px solid rgb(133, 133, 133); */
+    border-bottom: 1px solid white;
 
+
+    padding: 3px;
     display: flex;
     width: 100%;
     margin: 6px 0 0 0; 
 }
 
-.email-form div {
+input[type="email"]:focus-visible {
+    outline: none;
+}
+
+/* input[type="email"]:invalid:not(:placeholder-shown) {
+    background-color: red;
+} */
+
+
+/* ————————————— mobile version ————————————— */
+
+
+@media (max-width: 768px) {
+    .content {
+        width: auto;
+        margin: 0 20px 0 20px;
+        color: red;
+    }
+    
+    .email-form {
+        width: auto;
+        margin: 0 0 15vw 0;  
+    }
+
+}
+
+
+
+
+
+
+/* ————————————— archive ————————————— */
+
+/*  border-bottom: 2px solid rgb(133, 133, 133); */
+
+/* .email-form div {
     display: flex;
     flex-direction: row;
     align-items: baseline;
     gap: 10px;
     width: 100%;
-}
+} */
