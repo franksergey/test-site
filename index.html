@@ -5,7 +5,7 @@
         <meta   name="viewport"   content="width=device-width,"   initial-scale="1.0">
         <meta   name="description"  content="This is my first side made on HTML">
         <link   href="style.css" rel="stylesheet" type="text/css" />
-        <title>My site</title>
+        <title>Ритм Ноль</title>
     </head>
     <body>
         <div class="hero">
@@ -15,15 +15,20 @@
 
             <div class="content">
                 <h1>Ритм. Ноль.</h1>
-                <p>Море волнуется раз, море волнуется два, <br> море волнуется три — морская фигура замри</p>
-                <div class="textarea">
-                    <label for="textInput">Оставьте почту:</label>
-                    <textarea id="textInput" rows="5" cols="60" placeholder="name@exapmle.ru"></textarea>
-                </div>
-                
+                <p>Море волнуется раз, море волнуется два, море волнуется три — морская фигура замри</p>
+   
+                <form class="email-form">
+                    <label for="input">Мы уведомим о начале мероприятия. Ничего лишнего не пишем</label>
+                    <div>
+                        <input type="email" placeholder="name@exapmle.ru" required>
+                        <button type="submit">Сообщите мне</button>
+                    </div>
+                    <label class="consent">
+                        <input type="checkbox" required>
+                        Я согласен на обработку персональных данных
+                    </label>
+                </form>
             </div>
-
-
-        </div>
+         </div>
     </body>
 </html>

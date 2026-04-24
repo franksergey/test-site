@@ -2,12 +2,51 @@
     box-sizing: border-box
 }
 
-
 .hero {
     position: relative;
     
     height: 100vh;  
     overflow: hidden;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.content {
+    position: relative;
+    z-index: 1;
+
+    color: white;
+    text-align: center;
+
+    height: 100%;
+    width: 54%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    margin: 0 auto 0 auto;
+    
+}
+
+@media (max-width: 768px) {
+    .content {
+    width: auto;
+    margin: 0 20px 0 20px;
+    color: red;
+    }
+    
 }
 
 .bg-video {
@@ -24,45 +63,47 @@
     z-index: -1;
 }
 
-h1 {
-    font-size: 3em;
-}
-
-p {
-    font-size: 1.5em;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-textarea {
-    height: 1.5em; 
-    width: 50vw;
-}
-
-.textarea {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    margin: 0 0 1.5vw 0;
-}
-
-.content {
-    position: relative;
-    z-index: 1;
-
-    color: white;
-    text-align: center;
-
-    height: 100%;
-    width: 100%;
+.email-form {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    justify-content: space-between;
-    
+    align-items: flex-start;
+
+    margin: 0 0 10vw 0;    
+}
+
+.email-form button {
+    height: auto;
+    padding: 10px 20px; 
+    border-radius: 100px;
+    text-wrap: nowrap;
+
+}
+
+.email-form label {
+    text-align: left;
+}
+
+.email-form label[for="input"]{
+    font-size: 1.25em;
+}
+
+
+input[type="email"] {
+    font-size: 1.5em;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+/*  border-bottom: 2px solid rgb(133, 133, 133); */
+
+    display: flex;
+    width: 100%;
+    margin: 6px 0 0 0; 
+}
+
+.email-form div {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    width: 100%;
 }
