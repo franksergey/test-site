@@ -1,7 +1,8 @@
 /* ————————————— general class ————————————— */
 
 * {
-    box-sizing: border-box
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 .hero {
@@ -26,21 +27,33 @@ body {
 
 /* ————————————— castom class ————————————— */
 
+.content p {
+    /* width: 30vw; */
+    /* margin: 80% 0 0 0; */
+}
+
+.step {
+    width: 50%;
+    margin-left: calc(var(--i) * 10vw);
+}
+
 .content {
     position: relative;
     z-index: 1;
 
     color: white;
-    text-align: center;
-
+    width: auto;
     height: 100%;
-    width: 54%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: space-between;
-    margin: 0 auto 0 auto;
-    
+    margin: 0 20px 0 20px;
+}
+
+.content-2 {
+    width: 80%;
+    margin: 0 auto 0 auto;    
 }
 
 .bg-video {
@@ -79,7 +92,6 @@ body {
     padding: 10px 20px; 
     border-radius: 100px;
     text-wrap: nowrap;
-
 }
 
 .email-form button:hover {
@@ -94,6 +106,7 @@ body {
 
 .email-form label[for="input"]{
     font-size: 1.25em;
+    font-weight: 100;
 }
 
 
@@ -116,27 +129,50 @@ input[type="email"]:focus-visible {
     outline: none;
 }
 
-/* input[type="email"]:invalid:not(:placeholder-shown) {
-    background-color: red;
+/* label {
+    font-weight: 500;
+    color: violet;
 } */
 
+/* ————————————— adaptive version ————————————— */
 
-/* ————————————— mobile version ————————————— */
 
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .content {
         width: auto;
-        margin: 0 20px 0 20px;
-        color: red;
+        margin: 0 6px 0 6px;
+        /* color: red; */
     }
     
     .email-form {
         width: auto;
-        margin: 0 0 15vw 0;  
+        margin: 0 0 6px 0;  
+    }
+
+    .email-form label[for="input"]{
+    font-size: 1em;
+    }   
+
+    input[type="email"] {
+    border: none;
+    border-bottom: 1px solid white;
+    }
+
+    .content-2 {
+    width: 100%;
+    margin: 0 0 0 0;
+    
     }
 
 }
+
+@media (min-width: 1100px) {
+    .content-2 {
+    width: 50%;
+    }
+
+}
+
 
 
 
@@ -153,4 +189,25 @@ input[type="email"]:focus-visible {
     align-items: baseline;
     gap: 10px;
     width: 100%;
+} */
+
+/* .content {
+    position: relative;
+    z-index: 1;
+
+    color: white;
+    text-align: center;
+
+    height: 100%;
+    width: 54%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    margin: 0 auto 0 auto;
+    
+} */
+
+/* input[type="email"]:invalid:not(:placeholder-shown) {
+    background-color: red;
 } */

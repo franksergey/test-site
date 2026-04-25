@@ -4,30 +4,38 @@
         <meta   charset="UTF-8">
         <meta   name="viewport"   content="width=device-width,"   initial-scale="1.0">
         <meta   name="description"  content="This is my first side made on HTML">
+        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
         <link   href="style.css" rel="stylesheet" type="text/css" />
         <title>Ритм Ноль</title>
     </head>
     <body>
         <div class="hero">
             <video autoplay="autoplay" allowfullscreen="true" muted="muted"  playsinline="playsinline" loop="loop" preload="auto" class="bg-video">
-               <source src="media/video-background.webm" type="video/webm">
+                <source src="media/video-background.mp4" type="video/mp4">
+                <source src="media/video-background.webm" type="video/webm">
             </video>
 
             <div class="content">
-                <h1>Ритм. Ноль.</h1>
-                <p>Море волнуется раз, море волнуется два, море волнуется три — морская фигура замри</p>
-   
-                <form class="email-form">
-                    <label for="input">Уведомим о начале мероприятия. Ничего лишнего не пишем</label>
-                    <!-- <div> -->
-                        <input type="email" placeholder="name@exapmle.ru" required>
-                        <button type="submit">Сообщите мне</button>
-                    <!-- </div> -->
-                    <label class="consent">
-                        <input type="checkbox" required>
-                        Я согласен на обработку персональных данных
-                    </label>
-                </form>
+                <h1>Ритм Ноль</h1>
+                <div class="content-2">
+                    <p class="step" style="--i:1">море волнуется раз,</p> 
+                    <p class="step" style="--i:2">море волнуется два,</p> 
+                    <p class="step" style="--i:3">море волнуется три</p>
+                    <p class="step" style="--i:4">морская фигура на месте замри!</p>
+                </div>
+                <div class="content-2">
+                    <form class="email-form">
+                        <label for="input">уведомим о начале мероприятия. ничего лишнего не пишем</label>
+                        <!-- <div> -->
+                            <input type="email" placeholder="name@exapmle.ru" required>
+                            <button type="submit">Сообщите мне</button>
+                        <!-- </div> -->
+                        <label class="consent">
+                            <input type="checkbox" required>
+                            Я согласен на обработку персональных данных
+                        </label>
+                    </form>
+                </div>
             </div>
          </div>
     </body>
