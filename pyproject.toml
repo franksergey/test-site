@@ -85,6 +85,7 @@ ignorelist = ["id"]
 runtime-evaluated-base-classes = [
     "pydantic.BaseModel",
     "pydantic_settings.BaseSettings",
+    "server.database.Base",
 ]
 runtime-evaluated-decorators = [
     "invoke.tasks.task",

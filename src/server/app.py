@@ -12,6 +12,7 @@ from sqlalchemy.ext.asyncio import (
 )
 
 from server.config import settings
+from server.database import Base
 from server.site import read_root
 
 if TYPE_CHECKING:
@@ -74,6 +75,8 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[AppInitialState]:
         expire_on_commit=False,
         class_=AsyncSession,
     )
+    async with db_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
 
     yield {"sessionmaker": sessionmaker}
 
