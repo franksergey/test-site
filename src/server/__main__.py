@@ -31,7 +31,7 @@ def launch_server() -> None:
     """Запустить `uvicorn` сервер."""
     logger.info("Производится запуск основного раннера сервера.")
     uvicorn.run(
-        "app.dependencies.api:setup_app",
+        "server.app:setup_app",
         factory=True,
         host=settings.api.HOST,
         port=settings.api.PORT,
@@ -41,7 +41,7 @@ def launch_server() -> None:
         log_config=get_config_path(),
         log_level="debug",
         use_colors=True,
-        loop="app.main:create_asyncio_event_loop",
+        loop="server.__main__:create_asyncio_event_loop",
     )
 
 
