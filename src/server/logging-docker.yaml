@@ -5,21 +5,19 @@ version: 1
 disable_existing_loggers: False
 
 formatters:
-  rich-console:
-    format: "%(message)s"
-    datefmt: "[%X]"
+  console:
+    format: "%(levelname)s %(name)s - %(message)s"
 
   file:
     format: "%(asctime)s [%(levelname)s] %(name)s:%(lineno)d - %(funcName)s() - %(message)s"
 
 handlers:
   # Handler for the console
-  rich-console-handler:
-    class: rich.logging.RichHandler
+  console-handler:
+    class: logging.StreamHandler
     level: DEBUG
-    formatter: rich-console
-    rich_tracebacks: True
-    tracebacks_show_locals: True
+    formatter: console
+    stream: ext://sys.stdout
 
   # Handler for a log file
   file-handler:
@@ -35,7 +33,7 @@ handlers:
 root:
   level: NOTSET # All messages will be processed
   handlers:
-    - rich-console-handler
+    - console-handler
     - file-handler
 
 loggers:
