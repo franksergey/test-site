@@ -5,9 +5,15 @@ from typing import TYPE_CHECKING, TypedDict
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy.ext.asyncio import (
+    AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
+)
 
 from server.config import settings
-from server.site import read_root
+from server.database import Base
+from server.site import router as root_router
 
 if TYPE_CHECKING:
     from collections.abc import AsyncGenerator
@@ -26,7 +32,7 @@ def setup_app() -> FastAPI:
 
 
 def setup_routers(app: FastAPI) -> None:
-    app.add_api_route("/", read_root, methods=["GET"], tags=["Root"])
+    app.include_router(root_router)
     app.mount(
         "/static",
         StaticFiles(directory=settings.api.STATICFILES),
@@ -51,9 +57,27 @@ def setup_middlewares(app: FastAPI) -> None:
 
 
 class AppInitialState(TypedDict):
-    pass
+    sessionmaker: async_sessionmaker[AsyncSession]
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[AppInitialState]:
-    yield {}
+    db_engine = create_async_engine(
+        settings.db.database_url,
+        echo=settings.db.ECHO,  # Логирование SQL-запросов
+        future=True,
+        pool_pre_ping=True,  # Проверка соединения перед использованием
+    )
+    sessionmaker = async_sessionmaker(
+        bind=db_engine,
+        autocommit=False,
+        autoflush=False,
+        expire_on_commit=False,
+        class_=AsyncSession,
+    )
+    async with db_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+    yield {"sessionmaker": sessionmaker}
+
+    await db_engine.dispose()
