@@ -14,6 +14,8 @@ dependencies = [
     "fastapi[standard]>=0.136.1",
     "winloop>=0.5.0 ; sys_platform == 'win32'",
     "uvloop>=0.22.1 ; sys_platform == 'linux'",
+    "concurrent-log-handler>=0.9.29",
+    "rich>=15.0.0",
 ]
 
 # ============

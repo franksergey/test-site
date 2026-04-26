@@ -1,0 +1,60 @@
+# The schema is defined in logging docs:
+# https://docs.python.org/library/logging.config.html#dictionary-schema-details
+
+version: 1
+disable_existing_loggers: False
+
+formatters:
+  console:
+    format: "%(levelname)s %(name)s - %(message)s"
+
+  rich-console:
+    format: "%(message)s"
+    datefmt: "[%X]"
+
+  file:
+    format: "%(asctime)s [%(levelname)s] %(name)s:%(lineno)d - %(funcName)s() - %(message)s"
+
+handlers:
+  console-handler:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: console
+    stream: ext://sys.stdout
+
+  # Handler for the console
+  rich-console-handler:
+    class: rich.logging.RichHandler
+    level: DEBUG
+    formatter: rich-console
+    rich_tracebacks: True
+    tracebacks_show_locals: True
+
+  # Handler for a log file
+  file-handler:
+    class: concurrent_log_handler.ConcurrentRotatingFileHandler
+    level: NOTSET
+    formatter: file
+    mode: "a"
+    maxBytes: 10485760 # 10MB
+    backupCount: 5
+    encoding: "utf-8"
+    filename: ./log.log
+
+root:
+  level: NOTSET # All messages will be processed
+  handlers:
+    - rich-console-handler
+    - file-handler
+
+loggers:
+  aiosqlite:
+    level: INFO
+  httpcore:
+    level: INFO
+  alembic.ddl:
+    level: WARNING
+  alembic.runtime:
+    level: WARNING
+  watchfiles:
+    level: WARNING

@@ -224,4 +224,4 @@ __marimo__/
 
 # Logs
 *.log
-*.__lock
+*.__log.lock
