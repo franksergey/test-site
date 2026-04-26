@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from pathlib import Path
+
+from pydantic import BaseModel, DirectoryPath
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -20,6 +22,7 @@ class APIConfig(BaseModel):
     PORT: int = 8000
     PERFORMCHECKS: bool = False
     RELOAD: bool = True
+    STATICFILES: DirectoryPath = Path("./static")
 
 
 class AppSettings(BaseSettings):

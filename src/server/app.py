@@ -4,6 +4,10 @@ from typing import TYPE_CHECKING, TypedDict
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+
+from server.config import settings
+from server.site import read_root
 
 if TYPE_CHECKING:
     from collections.abc import AsyncGenerator
@@ -15,9 +19,19 @@ def setup_app() -> FastAPI:
     logger.info("Создание и настройка объекта FastAPI")
     app = FastAPI(title="Fest Site", lifespan=lifespan)
 
+    setup_routers(app)
     setup_middlewares(app)
 
     return app
+
+
+def setup_routers(app: FastAPI) -> None:
+    app.add_api_route("/", read_root, methods=["GET"], tags=["Root"])
+    app.mount(
+        "/static",
+        StaticFiles(directory=settings.api.STATICFILES),
+        name="static",
+    )
 
 
 def setup_middlewares(app: FastAPI) -> None:
