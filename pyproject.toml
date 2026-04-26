@@ -10,13 +10,15 @@ classifiers = ["Private :: Do Not Upload"]
 # Dependencies
 # ============
 requires-python = "~=3.14.0" # No need for broad support
-dependencies = []
+dependencies = [
+    "fastapi[standard]>=0.136.1",
+]
 
 # ============
 # Build System
 # ============
 [project.scripts]
-test-site = "server:main"
+test-site = "server.__main__:main"
 
 [build-system]
 requires = ["hatchling"]
