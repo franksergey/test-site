@@ -2,7 +2,10 @@ import asyncio
 import logging
 import sys
 
-from server.logging import setup_logging
+import uvicorn
+
+from server.config import settings
+from server.logging import get_config_path, setup_logging
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +30,19 @@ def create_asyncio_event_loop() -> asyncio.AbstractEventLoop:
 def launch_server() -> None:
     """Запустить `uvicorn` сервер."""
     logger.info("Производится запуск основного раннера сервера.")
-    # TODO(@soucelover)
+    uvicorn.run(
+        "app.dependencies.api:setup_app",
+        factory=True,
+        host=settings.api.HOST,
+        port=settings.api.PORT,
+        reload=settings.api.RELOAD,
+        reload_dirs=["src", "config"],
+        reload_excludes=["__pycache__", "*.log", "*.lock", ".git"],
+        log_config=get_config_path(),
+        log_level="debug",
+        use_colors=True,
+        loop="app.main:create_asyncio_event_loop",
+    )
 
 
 def main() -> None:
