@@ -225,3 +225,6 @@ __marimo__/
 # Logs
 *.log
 *.__log.lock
+
+# Database data
+data/

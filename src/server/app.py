@@ -5,6 +5,11 @@ from typing import TYPE_CHECKING, TypedDict
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy.ext.asyncio import (
+    AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
+)
 
 from server.config import settings
 from server.site import read_root
@@ -51,9 +56,25 @@ def setup_middlewares(app: FastAPI) -> None:
 
 
 class AppInitialState(TypedDict):
-    pass
+    sessionmaker: async_sessionmaker[AsyncSession]
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[AppInitialState]:
-    yield {}
+    db_engine = create_async_engine(
+        settings.db.database_url,
+        echo=settings.db.ECHO,  # Логирование SQL-запросов
+        future=True,
+        pool_pre_ping=True,  # Проверка соединения перед использованием
+    )
+    sessionmaker = async_sessionmaker(
+        bind=db_engine,
+        autocommit=False,
+        autoflush=False,
+        expire_on_commit=False,
+        class_=AsyncSession,
+    )
+
+    yield {"sessionmaker": sessionmaker}
+
+    await db_engine.dispose()
