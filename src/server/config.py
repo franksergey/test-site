@@ -33,7 +33,7 @@ class DatabaseConfig(BaseModel):
     PASSWORDFILE: FilePath | None = None
     HOST: str | None = None
     PORT: int | None = None
-    DATABASE: str | None = "./data/sqlite.db"
+    DATABASE: str | None = "./sqlite.db"
 
     ECHO: bool = False
     CHECKSCHEMA: bool = True
