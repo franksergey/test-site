@@ -12,6 +12,8 @@ classifiers = ["Private :: Do Not Upload"]
 requires-python = "~=3.14.0" # No need for broad support
 dependencies = [
     "fastapi[standard]>=0.136.1",
+    "winloop>=0.5.0 ; sys_platform == 'win32'",
+    "uvloop>=0.22.1 ; sys_platform == 'linux'",
 ]
 
 # ============
