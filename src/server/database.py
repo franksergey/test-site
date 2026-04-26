@@ -1,6 +1,6 @@
 from typing import ClassVar
 
-from sqlalchemy import MetaData
+from sqlalchemy import DateTime, MetaData
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -35,3 +35,4 @@ class EmailEntry(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
 
     email: Mapped[str]
+    created_at: Mapped[DateTime] = mapped_column(DateTime(timezone=True))

@@ -1,11 +1,12 @@
 # ruff: noqa: TC002, TC003
 
+import datetime
 from collections.abc import AsyncGenerator
 from typing import Annotated, cast
 
 from fastapi import APIRouter, Depends, Request, status
 from fastapi.responses import HTMLResponse
-from sqlalchemy import select
+from sqlalchemy import DateTime, select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from server.config import settings
@@ -35,17 +36,19 @@ async def get_session(request: Request) -> AsyncGenerator[AsyncSession]:
 async def send_emaili(
     db_session: Annotated[AsyncSession, Depends(get_session)], email: str
 ) -> None:
-    db_obj = EmailEntry(email=email)
+    now = datetime.datetime.now(tz=datetime.UTC)
+    db_obj = EmailEntry(email=email, created_at=now)
 
     db_session.add(db_obj)
     await db_session.flush()
 
 
-@router.get("/emails")
+# TODO(@soucelover): Turn off this endpoint
+@router.get("/emails", response_model=list[tuple[str, datetime.datetime]])
 async def read_email(
     db_session: Annotated[AsyncSession, Depends(get_session)],
-) -> list[str]:
+) -> list[tuple[str, DateTime]]:
     stmt = select(EmailEntry)
     db_objs = (await db_session.scalars(stmt)).all()
 
-    return [db_obj.email for db_obj in db_objs]
+    return [(db_obj.email, db_obj.created_at) for db_obj in db_objs]
