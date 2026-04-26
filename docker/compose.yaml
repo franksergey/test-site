@@ -1,0 +1,35 @@
+name: test-site
+services:
+  # Сервис сервера
+  test-site:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: production
+    container_name: test-site
+    image: franksergey/test-site
+    restart: always
+
+    environment:
+      - APP_API_RELOAD=False
+      - APP_DB_DATABASE=/data/sqlite.db
+
+    volumes:
+      - sqlite_data:/data/
+
+    env_file:
+      - path: .env
+        required: false
+
+    ports:
+      - ${PORT:-8000}:8000 # FastAPI server port
+    networks:
+      - bot-network
+
+
+networks:
+  bot-network:
+    driver: bridge
+
+volumes:
+  sqlite_data:

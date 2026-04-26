@@ -6,6 +6,10 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy import URL, make_url
 
 
+class LoggingConfig(BaseModel):
+    DOCKER: bool = False
+
+
 class DatabaseConfig(BaseModel):
     """Конфигурация подключения к базе данных.
 
@@ -108,6 +112,7 @@ class APIConfig(BaseModel):
 
 
 class AppSettings(BaseSettings):
+    logging: LoggingConfig = LoggingConfig()
     db: DatabaseConfig = DatabaseConfig()
     api: APIConfig = APIConfig()
 
