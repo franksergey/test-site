@@ -16,6 +16,7 @@ dependencies = [
     "uvloop>=0.22.1 ; sys_platform == 'linux'",
     "concurrent-log-handler>=0.9.29",
     "rich>=15.0.0",
+    "sqlalchemy[aiosqlite]>=2.0.49",
 ]
 
 # ============
