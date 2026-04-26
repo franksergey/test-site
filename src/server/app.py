@@ -13,7 +13,7 @@ from sqlalchemy.ext.asyncio import (
 
 from server.config import settings
 from server.database import Base
-from server.site import read_root
+from server.site import router as root_router
 
 if TYPE_CHECKING:
     from collections.abc import AsyncGenerator
@@ -32,7 +32,7 @@ def setup_app() -> FastAPI:
 
 
 def setup_routers(app: FastAPI) -> None:
-    app.add_api_route("/", read_root, methods=["GET"], tags=["Root"])
+    app.include_router(root_router)
     app.mount(
         "/static",
         StaticFiles(directory=settings.api.STATICFILES),
