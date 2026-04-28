@@ -4,7 +4,7 @@
         <meta   charset="UTF-8">
         <meta   name="viewport"   content="width=device-width,"   initial-scale="1.0">
         <meta   name="description"  content="This is my first side made on HTML">
-        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Onest&display=swap" rel="stylesheet">
         <link   href="static/style.css" rel="stylesheet" type="text/css" />
         <title>Ритм Ноль</title>
     </head>
@@ -16,6 +16,7 @@
             </video>
 
             <div class="content">
+                <!-- <svg class="logo" src="static/media/logo.svg"></svg> -->
                 <h1>Ритм Ноль</h1>
                 <div class="content-2">
                     <p class="step" style="--i:1">море волнуется раз,</p> 
@@ -24,10 +25,10 @@
                     <p class="step" style="--i:4">морская фигура на месте замри!</p>
                 </div>
                 <div class="content-2">
-                    <form class="email-form">
+                    <form class="email-form" action="emails" method="post">
                         <label for="input">уведомим о начале мероприятия. ничего лишнего не пишем</label>
                         <!-- <div> -->
-                            <input type="email" placeholder="name@exapmle.ru" required>
+                            <input type="email" placeholder="name@exapmle.ru" name="email" required>
                             <button type="submit">Сообщите мне</button>
                         <!-- </div> -->
                         <label class="consent">

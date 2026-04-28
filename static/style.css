@@ -2,7 +2,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Onest', sans-serif;
 }
 
 .hero {
@@ -102,6 +102,8 @@ body {
 
 .email-form label {
     text-align: left;
+    font-weight: 100;
+
 }
 
 .email-form label[for="input"]{

@@ -4,8 +4,8 @@ import datetime
 from collections.abc import AsyncGenerator
 from typing import Annotated, cast
 
-from fastapi import APIRouter, Depends, Request, status
-from fastapi.responses import HTMLResponse
+from fastapi import APIRouter, Depends, Form, Request, status
+from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy import DateTime, select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
@@ -32,15 +32,18 @@ async def get_session(request: Request) -> AsyncGenerator[AsyncSession]:
         yield session
 
 
-@router.post("/emails", status_code=status.HTTP_201_CREATED)
+@router.post("/emails")
 async def send_emaili(
-    db_session: Annotated[AsyncSession, Depends(get_session)], email: str
-) -> None:
+    db_session: Annotated[AsyncSession, Depends(get_session)],
+    email: Annotated[str, Form()],
+) -> RedirectResponse:
     now = datetime.datetime.now(tz=datetime.UTC)
     db_obj = EmailEntry(email=email, created_at=now)
 
     db_session.add(db_obj)
     await db_session.flush()
+
+    return RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
 
 
 # TODO(@soucelover): Turn off this endpoint
