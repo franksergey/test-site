@@ -13,7 +13,7 @@ from server.config import settings
 from server.database import EmailEntry
 
 INDEX_PAGE_PATH = settings.api.STATICFILES / "index.html"
-INDEX_PAGE = INDEX_PAGE_PATH.read_text()
+INDEX_PAGE = INDEX_PAGE_PATH.read_text(encoding="utf-8")
 
 router = APIRouter()
 
