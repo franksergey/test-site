@@ -40,8 +40,18 @@ canvas {
 }
 
 .drawing {
+    display: block;
+
     position:absolute;
     width: 80vw;
+    color: black;
+    z-index: -1;
+}   
+
+.drawing-mobile {
+    display: none;
+
+    position:absolute;
     color: black;
     z-index: -1;
 }   
@@ -70,7 +80,9 @@ canvas {
 }
 
 .content-3 {
-    width: 80%;
+    position: absolute;
+    height: 80vh;
+    width: 100%;
     margin: 0 auto 0 auto;    
 }
 
@@ -177,14 +189,11 @@ input[type="email"]:focus-visible {
 
     .content {
         width: auto;
-        margin: 0 6px 0 6px;
     }
     
     .email-form {
         width: auto;
-        margin: 0 0 6px 0;    
-        /* padding: 40px 60px 50px 60vw;   */
-        /* padding: 30px 54% 30px 30px; */
+        margin: 0 15px 15px 15px;    
     }
 
     .email-form label[for="input"]{
@@ -198,21 +207,39 @@ input[type="email"]:focus-visible {
     }
 
     .consent {
-       font-size: 1em; 
+    font-size: 1em; 
     }
 
     .content-2 {
     width: 100%;
-    margin: 0;
+    margin: 5vw 0 0 0;
     /* padding: 10vw 0 0 0; */
     
+    }
+
+    .content-3 {
+    /* height: 80%; */
+    /* max-width: 60%; */
+
+    /* margin: 10vw auto 0 auto;     */
+
+    }
+
+    .drawing { 
+    display: none; 
+    }
+
+    .drawing-mobile { 
+    display: block;
+    margin: 10vw auto 0 auto;    
+ 
     }
 
 }
 
 @media (min-width: 1500px) {
     .drawing {
-        width: 60vw;
+    width: 60vw;
     }   
 }
 
