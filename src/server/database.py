@@ -1,3 +1,4 @@
+import logging
 from contextlib import asynccontextmanager
 from typing import TYPE_CHECKING, ClassVar
 
@@ -13,6 +14,9 @@ from server.config import settings
 
 if TYPE_CHECKING:
     from collections.abc import AsyncGenerator
+
+
+logger = logging.getLogger(__name__)
 
 
 class Base(DeclarativeBase):
@@ -64,8 +68,12 @@ async def database() -> AsyncGenerator[async_sessionmaker[AsyncSession]]:
         expire_on_commit=False,
         class_=AsyncSession,
     )
+    logger.info("Создан движок БД с DSN адресом %r", settings.db.database_url)
+
     async with db_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+
+    logger.debug("Были созданы все таблицы БД через Base.metadata.create_all")
 
     yield sessionmaker
 

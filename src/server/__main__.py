@@ -38,7 +38,7 @@ def launch_server() -> None:
         reload=settings.api.RELOAD,
         reload_dirs=["src", "static"],
         reload_includes=["*.*"],
-        reload_excludes=["__pycache__", "*.pyc", "*.log", "*.lock", ".git"],
+        reload_excludes=["**/__pycache__", "*.pyc", "*.log", "*.lock", ".git"],
         log_config=get_config_path(),
         log_level="debug",
         use_colors=True,
