@@ -23,6 +23,11 @@ p {
 body {
     margin: 0;
     padding: 0;
+    background-color: #FC709C;
+}
+
+canvas {
+    touch-action: none;
 }
 
 /* ————————————— castom class ————————————— */
@@ -30,8 +35,15 @@ body {
 .logo {
     width: 10vw;
     /* height: 30vw; */
-    color: white;
+    color: black;
     margin: 20px 20px 0 0;
+}
+
+.drawing {
+    position:absolute;
+    width: 80vw;
+    color: black;
+ 
 }
 
 .step {
@@ -41,9 +53,8 @@ body {
 
 .content {
     position: relative;
-    z-index: 1;
 
-    color: white;
+    color: black;
     width: auto;
     height: 100%;
     display: flex;
@@ -74,8 +85,14 @@ body {
 
 /* ————————————— email-form ————————————— */
 
+
 .email-form {
-    background-color: black;
+    /* background-color: black; */
+    /* color: white; */
+
+    border: 2px solid;
+
+    position:sticky;
 
     display: flex;
     flex-direction: column;
@@ -84,7 +101,9 @@ body {
     width: 350px;
     gap: 10px;
     padding: 20px;
-    margin: 0 0 5vw 0;    
+    margin: 0 0 5vw 0;  
+    
+    z-index: 1
 }
 
 .email-form button {
@@ -94,12 +113,21 @@ body {
     padding: 10px 20px; 
     border-radius: 100px;
     text-wrap: nowrap;
+
+
+    font-size: 1em; 
+    /* color: white; */
+    background-color: transparent;
+    border: 2px solid black;
+
 }
 
 .email-form button:hover {
     border: none;
-    background-color: blue;
+    background-color:black;
+
     color: white;
+    border: 2px solid transparent;
 }
 
 .email-form label {
@@ -119,7 +147,8 @@ input[type="email"] {
     font-size: 1.2em;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid white;
+    /* border-bottom: 1px solid white; */
+    border-bottom: 2px solid black;
 
 
     padding: 3px;
@@ -132,17 +161,27 @@ input[type="email"]:focus-visible {
     outline: none;
 }
 
+/* ————————————— castom class ————————————— */
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 
 /* ————————————— adaptive version ————————————— */
 
 
 @media (max-width: 900px) {
-    .hero {
+    /* .hero {
     height: 115vh;  
-    }
+    } */
 
     .logo {
-        width: 25vw;
+        width: 20vw;
     }
 
     .content {
@@ -163,12 +202,12 @@ input[type="email"]:focus-visible {
 
     input[type="email"] {
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid black;
     font-size: 1.2em;
     }
 
     .consent {
-       font-size: 0.8em; 
+       font-size: 1em; 
     }
 
     .content-2 {
@@ -185,7 +224,6 @@ input[type="email"]:focus-visible {
     width: 50%;
     }
 } */
-
 
 
 
