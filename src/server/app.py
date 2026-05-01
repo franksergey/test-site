@@ -31,8 +31,8 @@ def setup_app() -> FastAPI:
 def setup_routers(app: FastAPI) -> None:
     app.include_router(root_router)
     app.mount(
-        "/static",
-        StaticFiles(directory=settings.api.STATICFILES),
+        "/",
+        StaticFiles(directory=settings.api.STATICFILES / "1", html=True),
         name="static",
     )
 
