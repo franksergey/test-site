@@ -14,6 +14,7 @@ services:
       - APP_API_RELOAD=False
       - APP_DB_DATABASE=/data/sqlite.db
       - APP_EXPORTFILE=/data/export.txt
+      - APP_API_SITEVERSION=${FEST_SITE_VERSION:-1}
 
     volumes:
       - sqlite_data:/data/

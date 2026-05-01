@@ -1,5 +1,6 @@
 from functools import cached_property
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, DirectoryPath, FilePath, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -109,6 +110,7 @@ class APIConfig(BaseModel):
     PERFORMCHECKS: bool = False
     RELOAD: bool = True
     STATICFILES: DirectoryPath = Path("./static")
+    SITEVERSION: Literal["1"] = "1"
 
 
 class AppSettings(BaseSettings):
