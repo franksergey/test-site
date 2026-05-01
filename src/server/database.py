@@ -1,7 +1,22 @@
-from typing import ClassVar
+import logging
+from contextlib import asynccontextmanager
+from typing import TYPE_CHECKING, ClassVar
 
 from sqlalchemy import DateTime, MetaData
+from sqlalchemy.ext.asyncio import (
+    AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
+)
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+
+from server.config import settings
+
+if TYPE_CHECKING:
+    from collections.abc import AsyncGenerator
+
+
+logger = logging.getLogger(__name__)
 
 
 class Base(DeclarativeBase):
@@ -36,3 +51,30 @@ class EmailEntry(Base):
 
     email: Mapped[str]
     created_at: Mapped[DateTime] = mapped_column(DateTime(timezone=True))
+
+
+@asynccontextmanager
+async def database() -> AsyncGenerator[async_sessionmaker[AsyncSession]]:
+    db_engine = create_async_engine(
+        settings.db.database_url,
+        echo=settings.db.ECHO,  # Логирование SQL-запросов
+        future=True,
+        pool_pre_ping=True,  # Проверка соединения перед использованием
+    )
+    sessionmaker = async_sessionmaker(
+        bind=db_engine,
+        autocommit=False,
+        autoflush=False,
+        expire_on_commit=False,
+        class_=AsyncSession,
+    )
+    logger.info("Создан движок БД с DSN адресом %r", settings.db.database_url)
+
+    async with db_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+    logger.debug("Были созданы все таблицы БД через Base.metadata.create_all")
+
+    yield sessionmaker
+
+    await db_engine.dispose()

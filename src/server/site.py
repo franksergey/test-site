@@ -6,7 +6,6 @@ from typing import Annotated, cast
 
 from fastapi import APIRouter, Depends, Form, Request, status
 from fastapi.responses import HTMLResponse, RedirectResponse
-from sqlalchemy import DateTime, select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from server.config import settings
@@ -44,14 +43,3 @@ async def send_emaili(
     await db_session.flush()
 
     return RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
-
-
-# TODO(@soucelover): Turn off this endpoint
-@router.get("/emails", response_model=list[tuple[str, datetime.datetime]])
-async def read_email(
-    db_session: Annotated[AsyncSession, Depends(get_session)],
-) -> list[tuple[str, DateTime]]:
-    stmt = select(EmailEntry)
-    db_objs = (await db_session.scalars(stmt)).all()
-
-    return [(db_obj.email, db_obj.created_at) for db_obj in db_objs]

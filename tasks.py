@@ -27,7 +27,7 @@ if TYPE_CHECKING:
     from collections.abc import Iterable
 
 
-type DockerTarget = Literal["prod", "docs", "dev"]
+type DockerTarget = Literal["prod"]
 
 
 class Target(TypedDict):
@@ -156,35 +156,6 @@ def start(ctx: Context, target: DockerTarget = "prod") -> None:
     subprocess.run([*docker_compose, "start"], check=False)  # noqa: S603
 
 
-@task()
-def start_debug(ctx: Context) -> None:
-    """Docker: Запускает дебаггинг в dev контейнере."""
-    target_obj = get_target("dev")
-
-    start_message("Starting debugging session for %s", target_obj)
-
-    docker_compose = get_docker_compose(target_obj)
-    subprocess.run([*docker_compose, "up", "-d", "--no-recreate"], check=False)  # noqa: S603
-
-    service = target_obj["main_service"]
-    command = ["bash", "./src/scripts/start-debug.sh"]
-    subprocess.run([*docker_compose, "exec", service, *command], check=False)  # noqa: S603
-
-
-@task()
-def stop_debug(ctx: Context) -> None:
-    """Docker: Завершает дебаггинг в dev контейнере."""
-    target_obj = get_target("dev")
-
-    start_message("Stopping debugging session for %s", target_obj)
-
-    docker_compose = get_docker_compose(target_obj)
-
-    service = target_obj["main_service"]
-    command = ["pkill", "-INT", "-u", "appuser", "-f", "python.*app"]
-    subprocess.run([*docker_compose, "exec", service, *command], check=False)  # noqa: S603
-
-
 @task(
     help={
         "target": TARGET_OPT_HELP,
@@ -273,3 +244,24 @@ def logs(
         args.extend(["--since", since])
 
     subprocess.run([*docker_compose, "logs", *args], check=False)  # noqa: S603
+
+
+@task
+def export(ctx: Context) -> None:
+    """Docker: Запустить скрипт экспорта email адресов."""
+    target_obj = get_target("prod")
+
+    start_message("Starting debugging session for %s", target_obj)
+
+    ctx.run("touch ./emails.txt")
+    docker_compose = get_docker_compose(target_obj)
+    args = [
+        "--rm",
+        "--build",
+        "-v=./emails.txt:/data/export.txt",
+        target_obj["main_service"],
+        "export-emails",
+    ]
+
+    run_command = [*docker_compose, "run", *args]
+    subprocess.run(run_command, check=False)  # noqa: S603
