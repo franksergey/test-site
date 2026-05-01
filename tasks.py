@@ -84,22 +84,19 @@ def start_message(message: str, target: Target) -> None:
 @task(
     help={
         "target": TARGET_OPT_HELP,
-        "port": "Порт, если цель – это сервер. По умолчанию 8000.",
         "build": "Собирать цель или нет? По умолчанию да.",
         "start": "Запустить контейнер или нет? По умолчанию да.",
     }
 )
-def up(  # noqa: PLR0913
+def up(
     ctx: Context,
     target: DockerTarget = "prod",
-    port: int = 8000,
     version: Literal["1"] = "1",
     *,
     build: bool = True,
     start: bool = True,
 ) -> None:
     """Docker: Собирает, создаёт и запускает контейнер."""
-    os.environ["PORT"] = str(port)
     os.environ["FEST_SITE_VERSION"] = version
 
     try:
