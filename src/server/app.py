@@ -28,13 +28,22 @@ def setup_app() -> FastAPI:
     return app
 
 
-def setup_routers(app: FastAPI) -> None:
+def setup_routers_v1(app: FastAPI) -> None:
     app.include_router(root_router)
     app.mount(
-        "/static",
-        StaticFiles(directory=settings.api.STATICFILES),
+        "/",
+        StaticFiles(directory=settings.api.STATICFILES / "1", html=True),
         name="static",
     )
+
+
+def setup_routers(app: FastAPI) -> None:
+    match settings.api.SITEVERSION:
+        case "1":
+            setup_routers_v1(app)
+        case _:
+            msg = "Unknown version"
+            raise NotImplementedError(msg)
 
 
 def setup_middlewares(app: FastAPI) -> None:

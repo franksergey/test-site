@@ -89,16 +89,18 @@ def start_message(message: str, target: Target) -> None:
         "start": "Запустить контейнер или нет? По умолчанию да.",
     }
 )
-def up(
+def up(  # noqa: PLR0913
     ctx: Context,
     target: DockerTarget = "prod",
     port: int = 8000,
+    version: Literal["1"] = "1",
     *,
     build: bool = True,
     start: bool = True,
 ) -> None:
     """Docker: Собирает, создаёт и запускает контейнер."""
     os.environ["PORT"] = str(port)
+    os.environ["FEST_SITE_VERSION"] = version
 
     try:
         target_obj = get_target(target)

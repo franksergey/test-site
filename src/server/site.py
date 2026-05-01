@@ -5,21 +5,12 @@ from collections.abc import AsyncGenerator
 from typing import Annotated, cast
 
 from fastapi import APIRouter, Depends, Form, Request, status
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import RedirectResponse
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
-from server.config import settings
 from server.database import EmailEntry
 
-INDEX_PAGE_PATH = settings.api.STATICFILES / "index.html"
-INDEX_PAGE = INDEX_PAGE_PATH.read_text(encoding="utf-8")
-
 router = APIRouter()
-
-
-@router.get("/")
-async def read_root() -> HTMLResponse:
-    return HTMLResponse(content=INDEX_PAGE)
 
 
 async def get_session(request: Request) -> AsyncGenerator[AsyncSession]:
