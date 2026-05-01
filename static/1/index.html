@@ -186,12 +186,24 @@
                             согласен на обработку персональных данных
                         </label>
                     </form>
+                    <div>
+                        <button class="open-form">сообщите о начале мероприятия</button>
+                    </div>
                 </div>
             </div>
          </div>
 
         <canvas id="background" width="1253" height="1114"></canvas>
         <script src="script.js"></script>
+        
+        <script>
+            const btn = document.querySelector('.open-form');
+            const form = document.querySelector('.email-form');
+
+            btn.addEventListener('click', () => {
+                form.classList.toggle('active');
+            });
+        </script>
 
     </body>
 </html>

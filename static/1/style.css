@@ -56,11 +56,6 @@ canvas {
     z-index: -1;
 }   
 
-.step {
-    width: 50%;
-    margin-left: calc(var(--i) * 10vw);
-}
-
 .content {
     position: relative;
 
@@ -109,6 +104,23 @@ canvas {
     z-index: 1
 }
 
+.open-form {
+    display: none; 
+
+    border: none;
+    width: 100%;
+    padding: 10px 20px; 
+    border-radius: 100px;
+    text-wrap: nowrap;
+
+    color: springgreen;
+
+    font-size: 1em; 
+    background-color: transparent;
+    border: 2px solid black;
+
+}
+
 .email-form button {
     border: none;
     /* height: auto; */
@@ -125,13 +137,15 @@ canvas {
 
 }
 
-.email-form button:hover {
+button:hover {
     border: none;
     background-color:black;
 
     color: white;
     border: 2px solid transparent;
 }
+
+
 
 .email-form label {
     text-align: left;
@@ -164,7 +178,7 @@ input[type="email"]:focus-visible {
     outline: none;
 }
 
-/* ————————————— castom class ————————————— */
+/* ———–––––————–––––——— id —————–––––––———————— */
 
 #background {
     position: fixed;
@@ -193,7 +207,14 @@ input[type="email"]:focus-visible {
     
     .email-form {
         width: auto;
-        margin: 0 15px 15px 15px;    
+        margin: 0 15px 15px 15px; 
+        
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .email-form.active {
+        transform: translateY(0);
     }
 
     .email-form label[for="input"]{
@@ -233,6 +254,10 @@ input[type="email"]:focus-visible {
     display: block;
     margin: 10vw auto 0 auto;    
  
+    }
+
+    .open-form {
+    display: block;
     }
 
 }
@@ -303,4 +328,9 @@ input[type="email"]:focus-visible {
 
     transform: translate(-50%, -50%);
     z-index: -1;
+} */
+
+/* .step {
+    width: 50%;
+    margin-left: calc(var(--i) * 10vw);
 } */
