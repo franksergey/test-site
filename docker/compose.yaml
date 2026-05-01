@@ -13,6 +13,7 @@ services:
     environment:
       - APP_API_RELOAD=False
       - APP_DB_DATABASE=/data/sqlite.db
+      - APP_EXPORTFILE=/data/export.txt
 
     volumes:
       - sqlite_data:/data/
