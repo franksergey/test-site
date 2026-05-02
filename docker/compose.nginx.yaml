@@ -25,8 +25,25 @@ services:
 
     networks:
       - server-network
+
+  nginx:
+    image: nginx:stable
+    container_name: test-site-nginx
+    restart: always
+
+    depends_on:
+      - test-site
+
     ports:
-      - ${PORT:-8000}:8000 # FastAPI server port
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - ./nginx/test-site.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+
+    networks:
+      - server-network
 
 
 networks:

@@ -27,7 +27,7 @@ if TYPE_CHECKING:
     from collections.abc import Iterable
 
 
-type DockerTarget = Literal["prod"]
+type DockerTarget = Literal["prod", "dev"]
 
 
 class Target(TypedDict):
@@ -41,11 +41,16 @@ class Target(TypedDict):
 PROJECT_ROOT = Path(__file__).parent
 DOCKER_FOLDER = PROJECT_ROOT / "docker"
 TARGETS: dict[DockerTarget, Target] = {
-    "prod": {
+    "dev": {
         "compose_files": [DOCKER_FOLDER / "./compose.yaml"],
+        "displayed_name": "The development container",
+        "main_service": "test-site",
+    },
+    "prod": {
+        "compose_files": [DOCKER_FOLDER / "./compose.nginx.yaml"],
         "displayed_name": "The production container",
         "main_service": "test-site",
-    }
+    },
 }
 TARGET_OPT_HELP = (
     "Цель для выполнения команды. Доступные цели: "
@@ -84,19 +89,22 @@ def start_message(message: str, target: Target) -> None:
 @task(
     help={
         "target": TARGET_OPT_HELP,
+        "port": "Порт, если цель – это сервер. По умолчанию 8000.",
         "build": "Собирать цель или нет? По умолчанию да.",
         "start": "Запустить контейнер или нет? По умолчанию да.",
     }
 )
-def up(
+def up(  # noqa: PLR0913
     ctx: Context,
     target: DockerTarget = "prod",
+    port: int = 8000,
     version: Literal["1"] = "1",
     *,
     build: bool = True,
     start: bool = True,
 ) -> None:
     """Docker: Собирает, создаёт и запускает контейнер."""
+    os.environ["PORT"] = str(port)
     os.environ["FEST_SITE_VERSION"] = version
 
     try:
