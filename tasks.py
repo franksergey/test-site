@@ -27,7 +27,7 @@ if TYPE_CHECKING:
     from collections.abc import Iterable
 
 
-type DockerTarget = Literal["prod"]
+type DockerTarget = Literal["prod", "dev"]
 
 
 class Target(TypedDict):
@@ -41,11 +41,16 @@ class Target(TypedDict):
 PROJECT_ROOT = Path(__file__).parent
 DOCKER_FOLDER = PROJECT_ROOT / "docker"
 TARGETS: dict[DockerTarget, Target] = {
-    "prod": {
+    "dev": {
         "compose_files": [DOCKER_FOLDER / "./compose.yaml"],
+        "displayed_name": "The development container",
+        "main_service": "test-site",
+    },
+    "prod": {
+        "compose_files": [DOCKER_FOLDER / "./compose.nginx.yaml"],
         "displayed_name": "The production container",
         "main_service": "test-site",
-    }
+    },
 }
 TARGET_OPT_HELP = (
     "Цель для выполнения команды. Доступные цели: "
