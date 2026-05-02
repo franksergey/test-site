@@ -249,8 +249,8 @@ def logs(
 
 
 def _get_uid_gid_pair(ctx: Context) -> tuple[int, int]:
-    uid = ctx.run("uid -u", hide=True)
-    gid = ctx.run("uid -u", hide=True)
+    uid = ctx.run("id -u", hide=True)
+    gid = ctx.run("id -g", hide=True)
 
     if uid is None or gid is None:
         raise ValueError
