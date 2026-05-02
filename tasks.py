@@ -248,6 +248,16 @@ def logs(
     subprocess.run([*docker_compose, "logs", *args], check=False)  # noqa: S603
 
 
+def _get_uid_gid_pair(ctx: Context) -> tuple[int, int]:
+    uid = ctx.run("uid -u", hide=True)
+    gid = ctx.run("uid -u", hide=True)
+
+    if uid is None or gid is None:
+        raise ValueError
+
+    return int(uid.stdout), int(gid.stdout)
+
+
 @task
 def export(ctx: Context) -> None:
     """Docker: Запустить скрипт экспорта email адресов."""
@@ -255,12 +265,14 @@ def export(ctx: Context) -> None:
 
     start_message("Starting debugging session for %s", target_obj)
 
+    uid, gid = _get_uid_gid_pair(ctx)
     ctx.run("touch ./emails.txt")
     docker_compose = get_docker_compose(target_obj)
     args = [
         "--rm",
         "--build",
         "-v=./emails.txt:/data/export.txt",
+        f"--user={uid}:{gid}",
         target_obj["main_service"],
         "export-emails",
     ]
