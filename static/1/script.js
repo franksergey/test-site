@@ -1,83 +1,21 @@
 (function () {
-    const canvas = document.getElementById("background");
-    if (!canvas || !(canvas instanceof HTMLCanvasElement)) return;
+    /* ————————————— open-form ————————————— */
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    // const btn = document.querySelector('.open-form');
+    // const form = document.querySelector('.email-form');
 
-    let isDrawing = false;
-    let prev = { x: 0, y: 0 };
+    // btn.addEventListener('click', () => {
+    //     form.classList.toggle('active');
+    // });
+    // btn.addEventListener('hover', () => {
+    //     form.classList.toggle('hover');
+    // });
 
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
+    const btn = document.querySelector('.open-form');
+    const form = document.querySelector('.email-form');
 
-    function clear() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    function getPos(e) {
-        if (e.touches) {
-            return {
-                x: e.touches[0].clientX,
-                y: e.touches[0].clientY
-            };
-        } else {
-            return {
-                x: e.clientX,
-                y: e.clientY
-            };
-        }
-    }
-
-    function draw(e) {
-        if (!isDrawing) return;
-
-        const pos = getPos(e);
-
-        ctx.beginPath();
-        ctx.lineWidth = 2;
-        ctx.lineCap = "round";
-        ctx.strokeStyle = "#353535";
-
-        ctx.moveTo(prev.x, prev.y);
-        ctx.lineTo(pos.x, pos.y);
-        ctx.stroke();
-
-        prev = pos;
-    }
-
-    canvas.addEventListener("mousedown", (e) => {
-        isDrawing = true;
-        prev = getPos(e);
+    btn.addEventListener('click', () => {
+    btn.classList.toggle('rotated');
+    form.classList.toggle('active');
     });
-
-    canvas.addEventListener("mousemove", draw);
-
-    canvas.addEventListener("mouseup", () => {
-        isDrawing = false;
-    });
-
-    canvas.addEventListener("mouseleave", () => {
-        isDrawing = false;
-    });
-
-    canvas.addEventListener("touchstart", (e) => {
-        isDrawing = true;
-        prev = getPos(e);
-    });
-
-    canvas.addEventListener("touchmove", (e) => {
-        draw(e);
-        e.preventDefault();
-    });
-
-    canvas.addEventListener("touchend", () => {
-        isDrawing = false;
-    });
-
-    window.addEventListener("resize", resize);
-
-    resize();
 })();
