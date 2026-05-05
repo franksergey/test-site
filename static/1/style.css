@@ -2,7 +2,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Onest', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 canvas {
@@ -84,6 +84,15 @@ main {
     z-index: -1;
 }
 
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
 /* ——————— line animation (mobile) ——————— */
 
 #background-mobile-line {
@@ -158,7 +167,7 @@ main {
 }
 
 
-input[type="email"] {
+input:not([type="checkbox"]) {
     color: white;
     
 
@@ -176,23 +185,12 @@ input[type="email"] {
     margin: 6px 0 0 0; 
 }
 
-input[type="email"]::placeholder {
+input::placeholder {    
     color: #5b5b5b;
 }
 
-input[type="email"]:focus-visible {
+input:focus-visible {
     outline: none;
-}
-
-
-/* ———–––––————–––––——— id —————–––––––———————— */
-
-#background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 }
 
 
