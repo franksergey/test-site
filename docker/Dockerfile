@@ -16,7 +16,7 @@ COPY pyproject.toml uv.lock ./
 
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv venv ${VIRTUAL_ENV} && \
-    uv sync --active --no-dev --no-install-project
+    uv sync --active --no-dev --no-install-project --extra postgres
 
 COPY src ./src/
 COPY README.md ./
