@@ -23,9 +23,6 @@ services:
       - APP_EXPORTFILE=/data/export.txt
       - APP_API_SITEVERSION=${FEST_SITE_VERSION:-1}
 
-    volumes:
-      - sqlite_data:/data/
-
     env_file:
       - path: .env
         required: false
@@ -70,5 +67,4 @@ secrets:
     file: ./.secrets/db_password.txt
 
 volumes:
-  sqlite_data:
   postgres_data:

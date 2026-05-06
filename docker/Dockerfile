@@ -56,10 +56,6 @@ COPY --chown=appuser:appgroup README.md pyproject.toml ./
 
 ENV APP_LOGGING_DOCKER=True
 
-RUN mkdir -p /data && \
-    chown appuser:appgroup /data -R
-VOLUME [ "/data" ]
-
 USER appuser
 
 ENV APP_API_HOST=0.0.0.0 \
