@@ -52,6 +52,9 @@ class EmailEntry(Base):
     email: Mapped[str]
     name: Mapped[str | None] = mapped_column(default=None)
     created_at: Mapped[DateTime] = mapped_column(DateTime(timezone=True))
+    reported: Mapped[bool] = mapped_column(
+        default=False, server_default="FALSE"
+    )
 
 
 @asynccontextmanager
@@ -70,11 +73,6 @@ async def database() -> AsyncGenerator[async_sessionmaker[AsyncSession]]:
         class_=AsyncSession,
     )
     logger.info("Создан движок БД с DSN адресом %r", settings.db.database_url)
-
-    async with db_engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-
-    logger.debug("Были созданы все таблицы БД через Base.metadata.create_all")
 
     yield sessionmaker
 

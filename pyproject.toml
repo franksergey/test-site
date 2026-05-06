@@ -37,6 +37,7 @@ dev = [
 # ============
 [project.scripts]
 export-emails = "server.export:main"
+report-emails = "server.report:main"
 test-site = "server.__main__:main"
 
 [build-system]

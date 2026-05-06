@@ -170,9 +170,16 @@ def start(ctx: Context, target: DockerTarget = "prod") -> None:
     help={
         "target": TARGET_OPT_HELP,
         "command": "Команда, которую нужно запустить.",
+        "build": "Собирать цель или нет? По умолчанию да.",
     }
 )
-def run(ctx: Context, command: str, target: DockerTarget = "prod") -> None:
+def run(
+    ctx: Context,
+    command: str,
+    target: DockerTarget = "prod",
+    *,
+    build: bool = True,
+) -> None:
     """Docker: Запускает команду для выбранного контейнера."""
     try:
         target_obj = get_target(target)
@@ -183,12 +190,10 @@ def run(ctx: Context, command: str, target: DockerTarget = "prod") -> None:
     start_message("Running command for %s", target_obj)
 
     docker_compose = get_docker_compose(target_obj)
-    args = [
-        "--rm",
-        "--build",
-        target_obj["main_service"],
-        *shlex.split(command),
-    ]
+    args = ["--rm", target_obj["main_service"], *shlex.split(command)]
+
+    if build:
+        args.insert(0, "--build")
 
     run_command = [*docker_compose, "run", *args]
     subprocess.run(run_command, check=False)  # noqa: S603
@@ -284,6 +289,19 @@ def export(ctx: Context) -> None:
         target_obj["main_service"],
         "export-emails",
     ]
+
+    run_command = [*docker_compose, "run", *args]
+    subprocess.run(run_command, check=False)  # noqa: S603
+
+
+@task
+def report(ctx: Context) -> None:
+    """Docker: Запустить скрипт отчёта почт."""
+    target_obj = get_target("prod")
+    start_message("Starting debugging session for %s", target_obj)
+
+    docker_compose = get_docker_compose(target_obj)
+    args = ["--rm", target_obj["main_service"], "report-emails"]
 
     run_command = [*docker_compose, "run", *args]
     subprocess.run(run_command, check=False)  # noqa: S603

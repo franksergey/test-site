@@ -29,7 +29,7 @@ async def send_emaili(
     name: Annotated[str, Form()],
 ) -> RedirectResponse:
     now = datetime.datetime.now(tz=datetime.UTC)
-    db_obj = EmailEntry(email=email, name=name, created_at=now)
+    db_obj = EmailEntry(email=email, name=name, reported=False, created_at=now)
 
     db_session.add(db_obj)
     await db_session.flush()

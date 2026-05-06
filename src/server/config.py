@@ -113,10 +113,31 @@ class APIConfig(BaseModel):
     SITEVERSION: Literal["1"] = "1"
 
 
+class ReportConfig(BaseModel):
+    TO: str = "inbox@xn--h1agcefip8f.xn--p1ai"
+    FROM: str = "inbox@xn--h1agcefip8f.xn--p1ai"
+    LOGIN: str = "inbox@xn--h1agcefip8f.xn--p1ai"
+    PASSWORD: str | None = None
+    PASSWORDFILE: FilePath | None = None
+    SERVER: str = "smtp.timeweb.ru"
+
+    @cached_property
+    def password(self) -> str:
+        if self.PASSWORD is not None:
+            return self.PASSWORD
+
+        if self.PASSWORDFILE is not None:
+            return self.PASSWORDFILE.read_text()
+
+        msg = "Пароль от почтового ящика не был указан."
+        raise ValueError(msg)
+
+
 class AppSettings(BaseSettings):
     logging: LoggingConfig = LoggingConfig()
     db: DatabaseConfig = DatabaseConfig()
     api: APIConfig = APIConfig()
+    report: ReportConfig = ReportConfig()
 
     EXPORTFILE: Path = Path("./emails.txt")
 
