@@ -51,6 +51,7 @@ COPY --from=builder --chown=appuser:appgroup /opt/venv ${VIRTUAL_ENV}
 
 # No need for src folder, it's already in venv
 COPY --chown=appuser:appgroup ./static ./static/
+COPY --chown=appuser:appgroup ./alembic ./alembic/
 COPY --chown=appuser:appgroup README.md pyproject.toml ./
 
 ENV APP_LOGGING_DOCKER=True
