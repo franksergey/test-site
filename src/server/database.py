@@ -52,6 +52,7 @@ class EmailEntry(Base):
     email: Mapped[str]
     name: Mapped[str | None] = mapped_column(default=None)
     created_at: Mapped[DateTime] = mapped_column(DateTime(timezone=True))
+    reported: Mapped[bool] = mapped_column(server_default="FALSE")
 
 
 @asynccontextmanager
