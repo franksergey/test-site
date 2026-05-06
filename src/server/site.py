@@ -26,9 +26,10 @@ async def get_session(request: Request) -> AsyncGenerator[AsyncSession]:
 async def send_emaili(
     db_session: Annotated[AsyncSession, Depends(get_session)],
     email: Annotated[str, Form()],
+    name: Annotated[str, Form()],
 ) -> RedirectResponse:
     now = datetime.datetime.now(tz=datetime.UTC)
-    db_obj = EmailEntry(email=email, created_at=now)
+    db_obj = EmailEntry(email=email, name=name, created_at=now)
 
     db_session.add(db_obj)
     await db_session.flush()
