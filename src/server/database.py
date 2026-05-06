@@ -50,6 +50,7 @@ class EmailEntry(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
 
     email: Mapped[str]
+    name: Mapped[str | None] = mapped_column(default=None)
     created_at: Mapped[DateTime] = mapped_column(DateTime(timezone=True))
 
 
