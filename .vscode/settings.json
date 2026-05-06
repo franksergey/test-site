@@ -1,3 +1,8 @@
 {
-    "python-envs.defaultEnvManager": "ms-python.python:venv"
+    "python-envs.defaultEnvManager": "ms-python.python:venv",
+    "yaml.customTags": [
+        "!reset scalar",
+        "!reset mapping",
+        "!reset sequence"
+    ],
 }
