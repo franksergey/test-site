@@ -27,7 +27,7 @@ if TYPE_CHECKING:
     from collections.abc import Iterable
 
 
-type DockerTarget = Literal["prod", "dev"]
+type DockerTarget = Literal["prod", "dev", "report"]
 
 
 class Target(TypedDict):
@@ -50,6 +50,14 @@ TARGETS: dict[DockerTarget, Target] = {
         "compose_files": [
             DOCKER_FOLDER / "./compose.yaml",
             DOCKER_FOLDER / "./compose.nginx.yaml",
+        ],
+        "displayed_name": "The production container",
+        "main_service": "test-site",
+    },
+    "report": {
+        "compose_files": [
+            DOCKER_FOLDER / "./compose.yaml",
+            DOCKER_FOLDER / "./compose.report.yaml",
         ],
         "displayed_name": "The production container",
         "main_service": "test-site",

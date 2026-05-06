@@ -1,0 +1,17 @@
+# Override over compose.yaml
+# Не 
+services:
+  # Сервис сервера
+  test-site:
+    ports: !reset []
+
+    environment:
+      - APP_REPORT_PASSWORDFILE=/run/secrets/mailbox_password
+
+    secrets:
+      - mailbox_password
+
+
+secrets:
+  mailbox_password:
+    file: ./.secrets/mailbox_password.txt
