@@ -40,9 +40,8 @@ def compose_message_content(emails: Sequence[EmailEntry]) -> str:
 
         buffer.write(
             "\nВы также можете получить доступ к таблице с отчётом в "
-            'прикреплённом файле "report.csv". Он содержит почты, имена и'
-            "даты отправки почт в виде таблицы.\n\n"
-            "Хорошего вам дня, внезапный почтальон!"
+            'прикреплённом файле "report.csv". Он содержит почты, имена и '
+            "даты отправки почт в виде таблицы."
         )
 
         return buffer.getvalue()
@@ -52,8 +51,7 @@ def compose_message_no_emails() -> str:
     return (
         "Это отчёт со список почт, присланных на наш сервис с момента "
         "последнего отчёта. Но почт за этот период никто не прислал, так"
-        "что в отчёте, увы, указать нечего.\n\n"
-        "Хорошего вам дня, внезапный почтальон!"
+        "что в отчёте, увы, указать нечего."
     )
 
 
@@ -88,7 +86,7 @@ def make_message(emails: Sequence[EmailEntry]) -> EmailMessage:
 
 
 def send_message(message: EmailMessage) -> None:
-    with smtplib.SMTP_SSL(settings.report.SERVER, 465) as smtp:
+    with smtplib.SMTP_SSL(settings.report.SERVER, 465, timeout=10) as smtp:
         smtp.login(settings.report.LOGIN, settings.report.password)
         smtp.send_message(message)
 
