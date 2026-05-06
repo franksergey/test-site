@@ -47,7 +47,10 @@ TARGETS: dict[DockerTarget, Target] = {
         "main_service": "test-site",
     },
     "prod": {
-        "compose_files": [DOCKER_FOLDER / "./compose.nginx.yaml"],
+        "compose_files": [
+            DOCKER_FOLDER / "./compose.yaml",
+            DOCKER_FOLDER / "./compose.nginx.yaml",
+        ],
         "displayed_name": "The production container",
         "main_service": "test-site",
     },

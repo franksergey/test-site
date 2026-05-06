@@ -1,31 +1,10 @@
-name: test-site
+# Override over compose.yaml
 services:
   # Сервис сервера
   test-site:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-      target: production
-    container_name: test-site
-    image: franksergey/test-site
-    restart: always
+    ports: !reset []
 
-    environment:
-      - APP_API_RELOAD=False
-      - APP_DB_DATABASE=/data/sqlite.db
-      - APP_EXPORTFILE=/data/export.txt
-      - APP_API_SITEVERSION=${FEST_SITE_VERSION:-1}
-
-    volumes:
-      - sqlite_data:/data/
-
-    env_file:
-      - path: .env
-        required: false
-
-    networks:
-      - server-network
-
+  # Nginx сервер
   nginx:
     image: nginx:stable
     container_name: test-site-nginx
@@ -44,11 +23,3 @@ services:
 
     networks:
       - server-network
-
-
-networks:
-  server-network:
-    driver: bridge
-
-volumes:
-  sqlite_data:

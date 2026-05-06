@@ -12,7 +12,14 @@ services:
 
     environment:
       - APP_API_RELOAD=False
-      - APP_DB_DATABASE=/data/sqlite.db
+      - APP_DB_DIALECT=postgresql
+      - APP_DB_DRIVER=psycopg
+      - APP_DB_USERNAME=test-site
+      - APP_DB_PASSWORD=
+      - APP_DB_PASSWORDFILE=/run/secrets/db_password
+      - APP_DB_HOST=db
+      - APP_DB_PORT=5432
+      - APP_DB_DATABASE=test-site
       - APP_EXPORTFILE=/data/export.txt
       - APP_API_SITEVERSION=${FEST_SITE_VERSION:-1}
 
@@ -28,10 +35,40 @@ services:
     ports:
       - ${PORT:-8000}:8000 # FastAPI server port
 
+    depends_on:
+      - db
+
+    secrets:
+      - db_password
+
+  # База данных сервера
+  db:
+    image: postgres:18-alpine
+    container_name: test-site-db
+    restart: always
+
+    environment:
+      - POSTGRES_USER=test-site
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/
+
+    secrets:
+      - db_password
+
+    networks:
+      - server-network
+
 
 networks:
   server-network:
     driver: bridge
 
+secrets:
+  db_password:
+    file: ./.secrets/db_password.txt
+
 volumes:
   sqlite_data:
+  postgres_data:
