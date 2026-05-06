@@ -24,6 +24,7 @@ dev = [
     "alembic>=1.18.4",
     "invoke>=3.0.3",
     "pyright>=1.1.409",
+    "ruff>=0.15.12",
 ]
 
 # ============
@@ -118,10 +119,31 @@ reportUnnecessaryCast = "warning"
 # ================
 # Pyrefly Settings
 # ================
-
 [tool.pyrefly]
 python-version = "3.14.0"
 infer-with-first-use = false
 
 [tool.pyrefly.errors]
 redundant-cast = "warn"
+
+# ================
+# Alembic settings
+# ================
+[tool.alembic]
+# https://alembic.sqlalchemy.org/en/latest/tutorial.html#editing-the-ini-file
+script_location = "%(here)s/alembic"
+file_template = "%%(rev)s_%%(slug)s"
+prepend_sys_path = [".", "src"]
+
+# Эти хуки исполняются после генерации ревизий
+[[tool.alembic.post_write_hooks]]
+name = "ruff-check"
+type = "module"
+module = "ruff"
+options = "check --fix-only REVISION_SCRIPT_FILENAME"
+
+[[tool.alembic.post_write_hooks]]
+name = "ruff-format"
+type = "module"
+module = "ruff"
+options = "format REVISION_SCRIPT_FILENAME"
