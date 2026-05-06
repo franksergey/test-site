@@ -11,6 +11,7 @@ classifiers = ["Private :: Do Not Upload"]
 # ============
 requires-python = "~=3.14.0" # No need for broad support
 dependencies = [
+    "alembic>=1.18.4",
     "fastapi[standard]>=0.136.1",
     "winloop>=0.5.0 ; sys_platform == 'win32'",
     "uvloop>=0.22.1 ; sys_platform == 'linux'",
@@ -21,7 +22,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "alembic>=1.18.4",
     "invoke>=3.0.3",
     "pyright>=1.1.409",
     "ruff>=0.15.12",

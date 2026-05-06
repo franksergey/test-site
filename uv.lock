@@ -746,6 +746,7 @@ name = "test-site"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "alembic" },
     { name = "concurrent-log-handler" },
     { name = "fastapi", extra = ["standard"] },
     { name = "rich" },
@@ -756,7 +757,6 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "alembic" },
     { name = "invoke" },
     { name = "pyright" },
     { name = "ruff" },
@@ -764,6 +764,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "alembic", specifier = ">=1.18.4" },
     { name = "concurrent-log-handler", specifier = ">=0.9.29" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.136.1" },
     { name = "rich", specifier = ">=15.0.0" },
@@ -774,7 +775,6 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "alembic", specifier = ">=1.18.4" },
     { name = "invoke", specifier = ">=3.0.3" },
     { name = "pyright", specifier = ">=1.1.409" },
     { name = "ruff", specifier = ">=0.15.12" },
