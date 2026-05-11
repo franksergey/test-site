@@ -59,9 +59,28 @@ main {
 
 /* ————————————— castom class ————————————— */
 
+.hide {
+    display: none;
+}
+
 .logo {
     width: 10vw;
     color: black;
+}
+
+/* ————————————— section ————————————— */
+
+.cover {
+    height: 100vh;
+}
+
+.client-pain {
+    height: 250vh;
+}
+
+.decision {
+    height: 110vh;
+
 }
 
 .background {
