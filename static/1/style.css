@@ -1,14 +1,164 @@
-/* ————————————— general class ————————————— */
-
-* {
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+/* ————————————— fonts ————————————— */
+@font-face {
+    font-family: "Varp";
+    src: 
+        url("fonts/VarpVariable.woff2"), format(truetype-variation);
+        font-display: swap; 
 }
 
-canvas {
-    touch-action: none;
-    display: block;
+@font-face {
+    font-family: "Inter";
+    src: url("https://fonts.googleapis.com/css2?family=Inter&display=swap") format("woff2");
+    font-display: swap; 
 
+}
+
+p {
+    font-family: "Inter";
+    font-size: 1em;
+    text-transform: lowercase;
+}
+
+.p-frame {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border: 2px solid;
+    padding: 20px;
+    margin: 40px 20px 0 20px;
+}
+
+.p-accent-2 {
+    font-family: "Varp";
+    font-variation-settings: "slnt" 0, "wdth" 30;
+    font-weight: normal;
+    font-size: 5em;
+    text-transform: uppercase;
+
+
+}
+
+.p-accent {
+
+
+    position: absolute;
+
+    opacity: 0;
+
+    text-align: center;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+    transform: translateY(20px);
+}
+
+.p-accent.p-active {
+    opacity: 1;
+    transform: translateY(-50px);
+}
+
+.aside {
+    position: absolute;
+    margin: 0 0 0 20px;
+    left: 0;
+}
+
+.diving hgroup {
+    margin: 10vw 5vw 70vw 25vw;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-family: "Varp";
+    font-size: 40vw;
+    font-weight: normal;
+    text-align: center;
+    font-variation-settings: "slnt" 0, "wdth" 6;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 90%;
+}
+
+h3 {
+    font-family: "Varp";
+    font-size: 3.4em;
+    font-weight: normal;
+    text-align: left;
+    font-variation-settings: "slnt" 23, "wdth" 78;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 100%;
+    letter-spacing: -3%;
+    margin: 0 20px;
+    /* display: flex; 
+    flex-direction: column; */
+    position: relative;
+    z-index: 1;
+
+}
+
+.h3-inverce {
+    font-variation-settings: "slnt" -16, "wdth" 78;
+    margin: 0;
+
+}
+
+.span-diving {
+    display: block;
+    margin: 200px 0 0 0;
+}
+
+.span-diving-inverce {
+    text-align: right;
+}
+
+
+h4 {
+    font-family: "Varp";
+    font-size: 4.5em;
+    font-weight: normal;
+    text-align: center;
+    font-variation-settings: "slnt" 30, "wdth" 55;
+    text-transform: uppercase;
+    margin: 80px 0 0 0;
+    line-height: 90%;
+    letter-spacing: -3%;
+}
+
+.h4-inverce {
+    font-variation-settings: "slnt" -30, "wdth" 55;
+    margin: 0;
+}
+
+h6 {
+    font-size: 1em;
+    font-weight: normal;
+    /* text-align: center; */
+    text-transform: uppercase;
+    margin: 0;
+    /* color: white; */
+
+}
+
+.marker {
+    background-color: #FC709C;
+    background: #FC709C;
+}
+
+.cover-text {
+    font-size: 1.3em;
+    font-weight: 100;
+    text-transform: lowercase;
+    margin: 0 30px 90px 20px;
+}
+
+span {
+    font-family: "Varp";
 }
 
 ::selection {
@@ -24,12 +174,33 @@ a:hover {
     color: white;
 }
 
-h1 {
-    font-size: 3em;
+/* ————————————— scroll animation ————————————— */
+
+.sticky {
+    position: sticky;
+    top: 0;
+
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
 }
 
-p {
-    font-size: 1.5em;
+
+
+/* ————————————— general tag ————————————— */
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+canvas {
+    touch-action: none;
+    display: block;
+
 }
 
 body {
@@ -40,22 +211,30 @@ body {
 }
 
 header {
+    width: 100%;
+    display: flex;
     position: absolute;
-    padding: 20px 0 0 20px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+    color: white;
 }
 
 main {
-    /* position: absolute;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
-
-    height: 100%;
-    margin: auto auto 0 20vw;  */
+    /* margin: 20px; */
+    overflow-x: clip;
 
 }   
+
+.decision img {
+    width: 60vw;
+    position: absolute;
+    z-index: 0;
+
+}
 
 /* ————————————— castom class ————————————— */
 
@@ -64,22 +243,85 @@ main {
 }
 
 .logo {
-    width: 10vw;
-    color: black;
+    width: 6.3em;
+}
+
+.schedule svg {
+    display: block;
+    margin: 50px 20px 0 20px ;
+    width: 85vw;
+}  
+
+.kodex {
+    height: 100vh;
+    background-color: #ffffff;
+    padding: 40px;
+}
+
+.kodex svg {
+    position: absolute;
+    display: block;
+    /* margin: 50px 20px 0 20px ; */
+    width: 170vw;
+    top: 10100px;
+}
+
+#Group-36 {
+    padding: 50px 0 0 0;
+}
+
+.logo-130 {
+    width: 15em;
+
+}
+
+.ritm-130 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 20px;
+
+    text-align: center;
+    height: 110vh;
+    color: #ffffff;
+    background-color: black;
 }
 
 /* ————————————— section ————————————— */
 
 .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
     height: 100vh;
+    width: 100%;
+    background-image: url("media/cover-background-image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
 }
 
 .client-pain {
-    height: 250vh;
+    height: 350vh;
+
+    background: linear-gradient(
+        to bottom,
+        #FC709C,
+        #ffffff
+    );
 }
 
 .decision {
     height: 110vh;
+    background-color:   #ffffff;
+    background-image:   url("media/decision-image.png");
+    background-size:    80vw;
+    background-position:    45vw 10vh;
+    background-repeat:  no-repeat;
 
 }
 
@@ -95,12 +337,12 @@ main {
 
 .background-mobile {
     display: none;
-    position: absolute;
+    /* position: absolute; */
 
-    width: 90vw;
-    margin: 100px 0 0 40px;
-    color: black;
-    z-index: -1;
+    /* width: 100vw; */
+    padding: 100px 0 0 30px;
+    /* color: white; */
+    /* z-index: -1; */
 }
 
 #background {
@@ -224,14 +466,14 @@ input:focus-visible {
     }
 
     header {
-        width: 100%;
+        /* width: 100%;
         display: flex;
         justify-content: flex-end;
-        padding: 20px 20px 0 0;
+        padding: 20px 20px 0 0; */
     }
 
     .logo {
-        width: 25vw;
+        /* width: 25vw; */
     }
     
     .email-form {
@@ -281,7 +523,7 @@ input:focus-visible {
     }
 
     main {
-        height: 128vh;
+        /* height: 128vh; */
     }
     
 }
