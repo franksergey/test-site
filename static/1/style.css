@@ -169,8 +169,13 @@ h6 {
 }
 
 .marker {
-    background-color: #FC709C;
-    background: #FC709C;
+
+    box-shadow: inset 0 -0.6em 0 #FC709C;
+
+
+    /* background: #FC709C;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone; */
 }
 
 .cover-text {
@@ -182,7 +187,10 @@ h6 {
 
 span {
     font-family: "Varp";
+    /* box-decoration-break: clone;
+    -webkit-box-decoration-break: clone; */
 }
+
 
 ::selection {
     background: black;
@@ -288,17 +296,20 @@ figure {
 } */
 
 #sticker-1 {
+    position: absolute;
     width: 40svw;
-    left: 0;
-    margin-top: -125svw;
-
+    left: 3svw;
+    margin-top: -19svw;
+    z-index: 2;
 }
 
 #sticker-2 {
+    position: absolute;
     width: 40svw;
-    left: 0;
+    right: 6svw;
     align-self: flex-end;    
-    margin-top: 10svw;
+    margin-top: 111svw;
+    z-index: 0;
 }
 
 .kodex {
@@ -312,6 +323,10 @@ figure {
     background-size:    160vw;
     background-position: 140px 0;
     background-repeat:  no-repeat; 
+}
+
+.kodex h2 {
+    z-index: 1;
 }
 
 /* .kodex svg {
@@ -458,7 +473,7 @@ figure {
 }
 
 .decision h5 {
-    margin: 0 80px 0 20px;
+    margin: 0 80px 0 10px;
 
     position: relative;
     z-index: 2;
@@ -476,12 +491,16 @@ figure {
 }
 
 .background {
-    display: block;
-    position: absolute;
+    /* display: block;
+    position: absolute; */
 
+    position: relative;
+
+    margin: 60px 0 0 250px;
+    
     width: 80vw;
-    margin: 40px 0 0 180px;
-    color: black;
+    /* margin: 40px 0 0 180px; */
+    color: white;
     z-index: -1;
 }   
 
@@ -659,12 +678,44 @@ input:focus-visible {
     }
 }
 
-@media (min-width: 1500px) {
-    .background {
-        width: 60vw;
-        margin: 60px 0 0 250px;
+@media (min-width: 900px) {
+    .logo {
+        width: 11.6em;
+    }
 
-    }   
+    .cover {
+            /* flex-direction: column-reverse; */
+            background-position: 0 -16svw;
+
+    }
+    .cover-text {
+        font-size: 2.5em;
+        margin: 0 51svw 2svw 2svw;
+    }
+
+    header {
+        padding: 1svw;
+    }
+
+    h6 {
+            font-size: 1.9em;
+    }
+
+    .background {
+
+
+    }  
+
+}
+
+
+
+
+
+
+
+@media (min-width: 1500px) {
+ 
 }
 
 @media (min-width: 500px) and (max-width: 900px) {
