@@ -16,7 +16,7 @@
 p {
     font-family: "Inter";
     font-size: 1em;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
 }
 
 .p-frame {
@@ -34,6 +34,7 @@ p {
     font-weight: normal;
     font-size: 5em;
     text-transform: uppercase;
+    margin: 0;
 
 
 }
@@ -67,6 +68,11 @@ p {
 
 .diving hgroup {
     margin: 10vw 5vw 70vw 25vw;
+}
+
+.space hgroup {
+    text-align: left;
+    margin: 0 20px;
 }
 
 h1 {
@@ -122,10 +128,10 @@ h4 {
     font-family: "Varp";
     font-size: 4.5em;
     font-weight: normal;
-    text-align: center;
+    /* text-align: center; */
     font-variation-settings: "slnt" 30, "wdth" 55;
     text-transform: uppercase;
-    margin: 80px 0 0 0;
+    margin: 0;
     line-height: 90%;
     letter-spacing: -3%;
 }
@@ -139,12 +145,14 @@ h5 {
     font-family: "Varp";
     font-size: 2.0em;
     font-weight: normal;    
-    font-variation-settings: "slnt" 24, "wdth" 100;
+    font-variation-settings: "slnt" 24, "wdth" 78;
     text-transform: uppercase;
-    line-height: 90%;
-    letter-spacing: -3%;
-    margin: 80px 20px 20px 20px;
+    line-height: 100%;
+    /* letter-spacing: -3%; */
+    margin: 0;
 }
+
+
 
 h6 {
     font-size: 1em;
@@ -154,6 +162,10 @@ h6 {
     margin: 0;
     /* color: white; */
 
+}
+
+.text-center {
+    text-align: center;
 }
 
 .marker {
@@ -236,7 +248,7 @@ header {
     padding: 10px;
     gap: 5px;
     color: white;
-    z-index: 1;
+    z-index: 2;
 }
 
 main {
@@ -249,11 +261,8 @@ main {
 
 }   
 
-.decision img {
-    width: 60vw;
-    position: absolute;
-    z-index: 0;
-
+figure {
+    margin: 0 20px;
 }
 
 /* ————————————— castom class ————————————— */
@@ -272,19 +281,46 @@ main {
     /* width: 85vw; */
 }  
 
-.kodex {
-    /* height: 100vh; */
-    background-color: #ffffff;
+/* .kodex {
+    /* height: 100vh;
+    /* background-color: #ffffff; 
     padding: 40px 0;
+} */
+
+#sticker-1 {
+    width: 40svw;
+    left: 0;
+    margin-top: -125svw;
+
 }
 
-.kodex svg {
-    /* position: absolute; */
-    display: block;
-    /* margin: 50px 20px 0 20px ; */
-    width: 200vw;
-    /* top: 0; */
+#sticker-2 {
+    width: 40svw;
+    left: 0;
+    align-self: flex-end;    
+    margin-top: 10svw;
 }
+
+.kodex {
+    display: flex;
+    height: 160svw;
+    flex-direction: column;
+    padding: 100px 0 80px 0;
+
+    background-color:   #ffffff;
+    background-image:   url("media/ellipse.svg");
+    background-size:    160vw;
+    background-position: 140px 0;
+    background-repeat:  no-repeat; 
+}
+
+/* .kodex svg {
+    /* position: absolute; 
+    display: block;
+    /* margin: 50px 20px 0 20px ; 
+    width: 200vw;
+    /* top: 0; 
+} */
 
 .project-history {
     background-color: #ffffff;
@@ -292,12 +328,13 @@ main {
 }
 
 .project-history h5 {
-    margin: 80px 0 0 0;
+    margin: 200px 0 0 0;
 }
 
 
 .logo-130 {
     width: 15em;
+    padding: 0 0 30px 0;
 
 }
 
@@ -306,25 +343,64 @@ main {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 80px 20px;
+    padding: 200px 10px;
 
     text-align: center;
-    height: 110vh;
+    /* height: 110vh; */
     color: #ffffff;
-    background-color: black;
+    background-color: white;
+
+    background-image:   url("media/rectangle.svg");
+    background-size:    60em;
+    background-position: top center;
+    background-repeat:  no-repeat; 
 }
 
-#sticker-1 {
-    width: 100px;
-    position: absolute;
-    left: 0;
+.ritm-130 .p-accent-2 {
+    font-size: 4em;
+
 }
+.ritm-130 .text-center {
+    margin: 250px 50px 0 50px;
+    color: black;
+}
+
+.ritm-130 .marker {
+    font-family: "Varp";
+}
+
+
 
 #kodex {
     /* width: 100svw; */
     /* height: 100vh; */
 }
 
+.space {
+    background-image:   url("media/ellipse.svg");
+    background-size:    200vw;
+    background-position: -100vw 100px;
+    background-repeat:  no-repeat; 
+}
+
+
+.space img {
+    width: 90svw;
+    margin: 10px;
+}
+
+/* ————————————— margins ————————————— */
+.margin-200 {
+    margin: 200px 0 0 0;
+}
+
+.margin-80 {
+    margin: 80px 0 0 0;
+}
+
+.margin-80-buttom {
+    margin: 0 0 80px 0;
+}
 
 /* ————————————— section ————————————— */
 
@@ -333,6 +409,8 @@ main {
     flex-direction: column;
     justify-content: space-between;
     flex-wrap: nowrap;
+    position: relative;
+    z-index: 1;
 
     height: 100svh;
     width: 100%;
@@ -341,6 +419,20 @@ main {
     background-position: center;
     background-repeat: no-repeat;
     color: white;
+}
+
+.cover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+
+    height: 100svh;
+    background: linear-gradient(
+        to top,
+        #FC709C,
+        transparent 25%);
 }
 
 .client-pain {
@@ -354,13 +446,29 @@ main {
 }
 
 .decision {
-    height: 110vh;
-    background-color:   #ffffff;
-    background-image:   url("media/decision-image.png");
-    background-size:    80vw;
-    background-position:    45vw 10vh;
-    background-repeat:  no-repeat;
+    display: flex;
+    flex-direction: column;
+    padding: 100px 0 80px 0;
 
+    background-color:   #ffffff;
+    background-image:   url("media/ellipse.svg");
+    background-size:    160vw;
+    background-position: -140px 0;
+    background-repeat:  no-repeat; 
+}
+
+.decision h5 {
+    margin: 0 80px 0 20px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.decision img {
+    width: 80vw;
+    align-self: flex-end;    
+    /* z-index: 0; */
+    margin-top: -10px;
 }
 
 .face-control {
