@@ -1,15 +1,254 @@
-/* ————————————— general class ————————————— */
-
-* {
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+/* ————————————— fonts ————————————— */
+@font-face {
+    font-family: "Varp";
+    src: 
+        url("fonts/VarpVariable.woff2"), format(truetype-variation);
+        font-display: swap; 
 }
 
-canvas {
-    touch-action: none;
+@font-face {
+    font-family: "Inter";
+    src: url("https://fonts.googleapis.com/css2?family=Inter&display=swap") format("woff2");
+    font-display: swap; 
+    font-weight: 100;
+
+}
+
+p {
+    /* font-family: "Inter"; */
+    font-size: 1em;
+    /* text-transform: lowercase; */
+    margin: 0;
+}
+
+hgroup p {
+    margin: 6svw 0;
+}
+
+
+
+.p-frame {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border: 2px solid;
+    padding: 20px;
+    margin: 40px 20px 0 20px;
+}
+
+.p-accent-2 {
+    font-family: "Varp";
+    font-variation-settings: "slnt" 0, "wdth" 30;
+    font-weight: normal;
+    font-size: 5em;
+    text-transform: uppercase;
+    margin: 0;
+
+
+}
+
+.p-accent {
+
+
+    position: absolute;
+
+    opacity: 0;
+
+    text-align: center;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+    transform: translateY(20px);
+}
+
+.p-accent.p-active {
+    opacity: 1;
+    transform: translateY(-50px);
+}
+
+/* .aside {
+    position: absolute;
+    margin: 0 0 0 20px;
+    left: 0;
+} */
+
+
+
+.space hgroup {
+    text-align: left;
+    margin: 0 20px;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-family: "Varp";
+    font-size: 40vw;
+    font-weight: normal;
+    text-align: center;
+    font-variation-settings: "slnt" 0, "wdth" 6;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 90%;
+}
+
+h3 {
+    font-family: "Varp";
+    font-size: 3.4em;
+    font-weight: normal;
+    text-align: left;
+    font-variation-settings: "slnt" 23, "wdth" 78;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 100%;
+    letter-spacing: -3%;
+    margin: 0 20px;
+    /* display: flex; 
+    flex-direction: column; */
+    position: relative;
+    z-index: 1;
+
+}
+
+.h3-inverce {
+    font-variation-settings: "slnt" -16, "wdth" 78;
+    margin: 0;
+
+}
+
+.span-diving {
     display: block;
+    margin: 200px 0 0 0;
+}
+
+.span-diving-inverce {
+    text-align: right;
+}
+
+
+.timeline {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 50svw;
+    padding: 0 3svw;
+}
+
+.timeline hgroup {
+    /* margin: 10vw 5vw 70vw 25vw; */
+    display: grid;
+    grid-template-columns: 16svw  1fr;
+    gap: 3svw;
 
 }
+
+
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10svw;
+    width: 1.2px;
+    background: black;
+}
+
+.timeline h6 {  
+    margin: 0 0 3svw;
+}
+
+.timeline-final {
+    z-index: 2;
+    margin: 0;
+    background: #FC709C;
+    padding: 0 0 2svw;
+    text-align: center;
+    height: auto;
+}
+
+.timeline .text-center {
+    z-index: 2;
+    margin: 0;
+    background: #FC709C;
+    height: fit-content;
+    padding: 0 0 2svw;
+}
+
+
+
+h4 {
+    font-family: "Varp";
+    font-size: 4.5em;
+    font-weight: normal;
+    /* text-align: center; */
+    font-variation-settings: "slnt" 30, "wdth" 55;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 90%;
+    letter-spacing: -3%;
+}
+
+.h4-inverce {
+    font-variation-settings: "slnt" -30, "wdth" 55;
+    margin: 0;
+}
+
+h5 {
+    font-family: "Varp";
+    font-size: 2.0em;
+    font-weight: normal;    
+    font-variation-settings: "slnt" 24, "wdth" 78;
+    text-transform: uppercase;
+    line-height: 100%;
+    /* letter-spacing: -3%; */
+    margin: 0;
+}
+
+
+
+h6 {
+    font-size: 1em;
+    font-weight: normal;
+    /* text-align: center; */
+    text-transform: uppercase;
+    margin: 0;
+    /* color: white; */
+
+}
+
+.text-center {
+    text-align: center;
+}
+
+.marker {
+
+    box-shadow: inset 0 -0.6em 0 #FC709C;
+
+
+    /* background: #FC709C;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone; */
+}
+
+.cover-text {
+    font-size: 1.3em;
+    font-weight: 100;
+    text-transform: lowercase;
+    margin: 0 18svw 10svw 3svw ;
+}
+
+span {
+    font-family: "Varp";
+    /* box-decoration-break: clone;
+    -webkit-box-decoration-break: clone; */
+}
+
 
 ::selection {
     background: black;
@@ -24,64 +263,325 @@ a:hover {
     color: white;
 }
 
-h1 {
-    font-size: 3em;
+/* ————————————— scroll animation ————————————— */
+
+.sticky {
+    position: sticky;
+    top: 0;
+
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
 }
 
-p {
-    font-size: 1.5em;
+
+
+/* ————————————— general tag ————————————— */
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+canvas {
+    touch-action: none;
+    display: block;
+
 }
 
 body {
+    /* display: flex; */
+    /* width: 100svw; */
     margin: 0;
     padding: 0;
-    background-color: #FC709C;
     color: black;
+    /* padding-top: env(safe-area-inset-top); */
+        overflow-x: clip;
+
 }
 
 header {
+    width: 100%;
+    display: flex;
     position: absolute;
-    padding: 20px 0 0 20px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+    color: white;
+    z-index: 2;
 }
 
 main {
-    position: absolute;
-
+    position: relative;
     display: flex;
+    /* margin: 20px; */
+    background-color: #FC709C;
+    overflow: clip;
     flex-direction: column;
-    justify-content: flex-end;
-
-
-    height: 100%;
-    margin: auto auto 0 20vw; 
 
 }   
 
+figure {
+    margin: 0 3svw;
+}
+
+figcaption {
+        margin: 0 11svw 0 0;
+
+}
+
 /* ————————————— castom class ————————————— */
 
+.hide {
+    display: none;
+}
+
 .logo {
-    width: 10vw;
+    width: 6.3em;
+}
+
+.schedule svg {
+    display: block;
+    margin: 50px 20px 0 20px ;
+    /* width: 85vw; */
+}  
+
+/* .kodex {
+    /* height: 100vh;
+    /* background-color: #ffffff; 
+    padding: 40px 0;
+} */
+
+#sticker-1 {
+    position: absolute;
+    width: 40svw;
+    left: 3svw;
+    margin-top: -19svw;
+    z-index: 2;
+}
+
+#sticker-2 {
+    position: absolute;
+    width: 40svw;
+    right: 6svw;
+    align-self: flex-end;    
+    margin-top: 111svw;
+    z-index: 0;
+}
+
+.kodex {
+    display: flex;
+    height: 160svw;
+    flex-direction: column;
+    padding: 100px 0 80px 0;
+
+    background-color:   #ffffff;
+    background-image:   url("media/ellipse.svg");
+    background-size:    160vw;
+    background-position: 140px 0;
+    background-repeat:  no-repeat; 
+}
+
+.kodex h2 {
+    z-index: 1;
+}
+
+/* .kodex svg {
+    /* position: absolute; 
+    display: block;
+    /* margin: 50px 20px 0 20px ; 
+    width: 200vw;
+    /* top: 0; 
+} */
+
+.project-history {
+    background-color: #ffffff;
+    padding: 40px;
+}
+
+.project-history h5 {
+    margin: 200px 0 0 0;
+}
+
+
+.logo-130 {
+    width: 15em;
+    padding: 0 0 30px 0;
+
+}
+
+.ritm-130 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 200px 10px;
+
+    text-align: center;
+    /* height: 110vh; */
+    color: #ffffff;
+    background-color: white;
+
+    background-image:   url("media/rectangle.svg");
+    background-size:    60em;
+    background-position: top center;
+    background-repeat:  no-repeat; 
+}
+
+.ritm-130 .p-accent-2 {
+    font-size: 4em;
+
+}
+.ritm-130 .text-center {
+    margin: 73svw 50px 0 50px;
     color: black;
 }
 
-.background {
-    display: block;
-    position: absolute;
+.ritm-130 .marker {
+    font-family: "Varp";
+}
 
+
+
+#kodex {
+    /* width: 100svw; */
+    /* height: 100vh; */
+}
+
+.space {
+    background-image:   url("media/ellipse.svg");
+    background-size:    200vw;
+    background-position: -100vw 100px;
+    background-repeat:  no-repeat; 
+}
+
+
+.space img {
+    width: 90svw;
+    margin: 10px;
+}
+
+/* ————————————— margins ————————————— */
+.margin-200 {
+    margin: 200px 0 0 0;
+}
+
+.margin-80 {
+    margin: 80px 0 0 0;
+}
+
+.margin-80-buttom {
+    margin: 0 0 80px 0;
+}
+
+/* ————————————— section ————————————— */
+
+.cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 1;
+
+    height: 100svh;
+    width: 100%;
+    background-image: url("media/cover-background-image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.cover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+
+    height: 100svh;
+    background: linear-gradient(
+        to top,
+        #FC709C,
+        transparent 25%);
+}
+
+.client-pain {
+    height: 350vh;
+
+    background: linear-gradient(
+        to bottom,
+        #FC709C,
+        #ffffff
+    );
+}
+
+.decision {
+    display: flex;
+    flex-direction: column;
+    padding: 100px 0 80px 0;
+
+    background-color:   #ffffff;
+    background-image:   url("media/ellipse.svg");
+    background-size:    160vw;
+    background-position: -140px 0;
+    background-repeat:  no-repeat; 
+}
+
+.decision h5 {
+    margin: 0 80px 0 10px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.decision img {
     width: 80vw;
-    margin: 40px 0 0 180px;
-    color: black;
+    align-self: flex-end;    
+    /* z-index: 0; */
+    margin-top: -5px;
+}
+
+.decision video {
+    width: 80vw;
+    align-self: flex-end;    
+    /* z-index: 0; */
+    margin-top: -5px;
+}
+
+.face-control {
+ margin: 150px 0;
+}
+
+.background {
+    /* display: block;
+    position: absolute; */
+
+    position: relative;
+
+    margin: 7svw 0 0 5svw;
+    
+    width: 90vw;
+    /* margin: 40px 0 0 180px; */
+    color: white;
     z-index: -1;
 }   
 
 .background-mobile {
     display: none;
-    position: absolute;
+    /* position: absolute; */
 
-    width: 90vw;
-    margin: 100px 0 0 40px;
-    color: black;
-    z-index: -1;
+    /* width: 100vw; */
+    padding: 100px 0 0 30px;
+    /* color: white; */
+    /* z-index: -1; */
 }
 
 #background {
@@ -91,6 +591,7 @@ main {
     width: 100%;
     height: 100%;
 }
+
 
 
 /* ——————— line animation (mobile) ——————— */
@@ -199,20 +700,20 @@ input:focus-visible {
 @media (max-width: 900px) {
 
     main {
-        margin: 0; 
+        /* margin: 0; 
         width: 100%;
-        height: 122vh;
+        height: 122vh; */
     }
 
     header {
-        width: 100%;
+        /* width: 100%;
         display: flex;
         justify-content: flex-end;
-        padding: 20px 20px 0 0;
+        padding: 20px 20px 0 0; */
     }
 
     .logo {
-        width: 25vw;
+        /* width: 25vw; */
     }
     
     .email-form {
@@ -247,12 +748,92 @@ input:focus-visible {
     }
 }
 
-@media (min-width: 1500px) {
-    .background {
-        width: 60vw;
-        margin: 60px 0 0 250px;
+@media (min-width: 900px) {
+    .logo {
+        width: 11.6em;
+    }
 
-    }   
+    .cover {
+            /* flex-direction: column-reverse; */
+            /* background-position: 0 -16svw; */
+
+    }
+    .cover-text {
+        font-size: 2.5em;
+        margin: 0 51svw 2svw 2svw;
+        letter-spacing: 3%;
+
+
+    }
+
+    header {
+        padding: 1svw;
+    }
+
+    h2 {
+       font-size: 18vw; 
+    }
+
+    h4 {
+        font-size: 12.5em;
+    }
+
+    h5 {
+        font-size: 7em;
+    }
+
+    h6 {
+            font-size: 1.9em;
+    }
+
+    .decision video {
+        width: 40vw;
+        margin-top: -46svw;
+
+    }  
+
+    .decision {
+        padding: 100px 0 12svw 0;
+    }
+
+    .decision h5 {
+    margin: 0 26svw 0 2svw;
+    }
+
+    .p-frame {
+        justify-content: center;
+    }
+
+    .cover-2 hgroup {
+        margin: 0 20svw;
+    }
+
+    p {
+        font-size: 2em;
+    }
+
+    .schedule {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 10svw;
+
+    }
+
+    .schedule svg {
+        width: 40svw;
+    }
+}
+
+
+
+
+
+
+
+@media (min-width: 1500px) {
+ 
 }
 
 @media (min-width: 500px) and (max-width: 900px) {
@@ -262,7 +843,7 @@ input:focus-visible {
     }
 
     main {
-        height: 128vh;
+        /* height: 128vh; */
     }
     
 }
