@@ -10,14 +10,22 @@
     font-family: "Inter";
     src: url("https://fonts.googleapis.com/css2?family=Inter&display=swap") format("woff2");
     font-display: swap; 
+    font-weight: 100;
 
 }
 
 p {
-    font-family: "Inter";
+    /* font-family: "Inter"; */
     font-size: 1em;
     /* text-transform: lowercase; */
+    margin: 0;
 }
+
+hgroup p {
+    margin: 6svw 0;
+}
+
+
 
 .p-frame {
     text-align: center;
@@ -60,15 +68,13 @@ p {
     transform: translateY(-50px);
 }
 
-.aside {
+/* .aside {
     position: absolute;
     margin: 0 0 0 20px;
     left: 0;
-}
+} */
 
-.diving hgroup {
-    margin: 10vw 5vw 70vw 25vw;
-}
+
 
 .space hgroup {
     text-align: left;
@@ -122,6 +128,58 @@ h3 {
 .span-diving-inverce {
     text-align: right;
 }
+
+
+.timeline {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 50svw;
+    padding: 0 3svw;
+}
+
+.timeline hgroup {
+    /* margin: 10vw 5vw 70vw 25vw; */
+    display: grid;
+    grid-template-columns: 16svw  1fr;
+    gap: 3svw;
+
+}
+
+
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10svw;
+    width: 1.2px;
+    background: black;
+}
+
+.timeline h6 {  
+    margin: 0 0 3svw;
+}
+
+.timeline-final {
+    z-index: 2;
+    margin: 0;
+    background: #FC709C;
+    padding: 0 0 2svw;
+    text-align: center;
+    height: auto;
+}
+
+.timeline .text-center {
+    z-index: 2;
+    margin: 0;
+    background: #FC709C;
+    height: fit-content;
+    padding: 0 0 2svw;
+}
+
 
 
 h4 {
@@ -182,7 +240,7 @@ h6 {
     font-size: 1.3em;
     font-weight: 100;
     text-transform: lowercase;
-    margin: 0 30px 30px 20px;
+    margin: 0 18svw 10svw 3svw ;
 }
 
 span {
@@ -270,7 +328,12 @@ main {
 }   
 
 figure {
-    margin: 0 20px;
+    margin: 0 3svw;
+}
+
+figcaption {
+        margin: 0 11svw 0 0;
+
 }
 
 /* ————————————— castom class ————————————— */
@@ -376,7 +439,7 @@ figure {
 
 }
 .ritm-130 .text-center {
-    margin: 250px 50px 0 50px;
+    margin: 73svw 50px 0 50px;
     color: black;
 }
 
@@ -483,7 +546,14 @@ figure {
     width: 80vw;
     align-self: flex-end;    
     /* z-index: 0; */
-    margin-top: -10px;
+    margin-top: -5px;
+}
+
+.decision video {
+    width: 80vw;
+    align-self: flex-end;    
+    /* z-index: 0; */
+    margin-top: -5px;
 }
 
 .face-control {
@@ -496,9 +566,9 @@ figure {
 
     position: relative;
 
-    margin: 60px 0 0 250px;
+    margin: 7svw 0 0 5svw;
     
-    width: 80vw;
+    width: 90vw;
     /* margin: 40px 0 0 180px; */
     color: white;
     z-index: -1;
@@ -685,27 +755,75 @@ input:focus-visible {
 
     .cover {
             /* flex-direction: column-reverse; */
-            background-position: 0 -16svw;
+            /* background-position: 0 -16svw; */
 
     }
     .cover-text {
         font-size: 2.5em;
         margin: 0 51svw 2svw 2svw;
+        letter-spacing: 3%;
+
+
     }
 
     header {
         padding: 1svw;
     }
 
+    h2 {
+       font-size: 18vw; 
+    }
+
+    h4 {
+        font-size: 12.5em;
+    }
+
+    h5 {
+        font-size: 7em;
+    }
+
     h6 {
             font-size: 1.9em;
     }
 
-    .background {
-
+    .decision video {
+        width: 40vw;
+        margin-top: -46svw;
 
     }  
 
+    .decision {
+        padding: 100px 0 12svw 0;
+    }
+
+    .decision h5 {
+    margin: 0 26svw 0 2svw;
+    }
+
+    .p-frame {
+        justify-content: center;
+    }
+
+    .cover-2 hgroup {
+        margin: 0 20svw;
+    }
+
+    p {
+        font-size: 2em;
+    }
+
+    .schedule {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 10svw;
+
+    }
+
+    .schedule svg {
+        width: 40svw;
+    }
 }
 
 
