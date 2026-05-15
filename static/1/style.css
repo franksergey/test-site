@@ -492,7 +492,7 @@ figcaption {
 
     height: 100svh;
     width: 100%;
-    background-image: url("media/cover-background-image.png");
+    background-image: url("media/cover-background-image.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
