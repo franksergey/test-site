@@ -1,58 +1,50 @@
 /* ————————————— fonts ————————————— */
-@font-face {
-    font-family: "Varp";
-    src: 
-        url("fonts/VarpVariable.woff2"), format(truetype-variation);
-        font-display: swap; 
+@font-face  {
+    font-family:    "Varp";
+    src:
+        url("fonts/VarpVariable.woff2"),    format(truetype-variation);
+        font-display:   swap; 
 }
 
-@font-face {
-    font-family: "Inter";
-    src: url("https://fonts.googleapis.com/css2?family=Inter&display=swap") format("woff2");
-    font-display: swap; 
-    font-weight: 100;
-
+@font-face  {
+    font-family:    "Inter";
+    src:    url("https://fonts.googleapis.com/css2?family=Inter&display=swap")  format("woff2");
+    font-display:   swap;
+    font-weight:    100;
 }
 
-p {
-    /* font-family: "Inter"; */
-    font-size: 1em;
-    /* text-transform: lowercase; */
-    margin: 0;
+p   {
+    font-size:  1em;
+    margin:     0;
 }
 
-hgroup p {
-    margin: 6svw 0;
+hgroup  p    {
+    margin:     6svw    0;
 }
 
 
 
-.p-frame {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    border: 2px solid;
-    padding: 20px;
-    margin: 40px 20px 0 20px;
+.p-frame    {
+    text-align:     center;
+    display:        flex;
+    align-items:    center;
+    border:         2px solid;
+    padding:        20px;
+    margin:         40px    20px    0   20px;
 }
 
 .p-accent-2 {
-    font-family: "Varp";
-    font-variation-settings: "slnt" 0, "wdth" 30;
-    font-weight: normal;
-    font-size: 5em;
+    font-family:    "Varp";
+    font-variation-settings:    "slnt"  0,  "wdth"  30;
+    font-weight:    normal;
+    font-size:      5em;
     text-transform: uppercase;
-    margin: 0;
-
-
+    margin:         0;
 }
 
-.p-accent {
-
-
-    position: absolute;
-
-    opacity: 0;
+.p-accent   {
+    position:   absolute;
+    opacity:    0;
 
     text-align: center;
 
@@ -333,7 +325,7 @@ figcaption {
 
 button {
     border: none;
-    /* width: auto; */
+    width: 100%;
     padding: 10px 20px; 
     border-radius: 100px;
     text-wrap: nowrap;
@@ -344,14 +336,18 @@ button {
     border: 1px solid black;
 }
 
-
+.cover button {
+    color: #ffffff;
+    border: 1px solid white;
+}
 
 .button-sticky {
     position: sticky;
+    width: auto;
     bottom: 3svw;
-    color: black;
-    background-color: white;
-    margin: 3svw;
+    color: white;
+    background-color: black;
+    margin: 3svw 6svw;
     z-index: 3;
 
     transform: translateY(120px);
@@ -368,8 +364,8 @@ button {
 }
 
 button:hover {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 /* ————————————— castom class ————————————— */
@@ -529,7 +525,7 @@ button:hover {
     position: relative;
     z-index: 1;
 
-    padding: 0 3svw 10svw 3svw;
+    padding: 0 3svw 3svw 3svw;
     gap: 3svw;
 
     height: 100svh;
@@ -545,13 +541,11 @@ button:hover {
     font-size: 1.3em;
     font-weight: 100;
     text-transform: lowercase;
+    margin: 0 0 3svw 0;
     /* margin: 0 18svw 10svw 3svw ; */
 }
 
-.cover button {
-    color: #ffffff;
-    border: 1px solid white;
-}
+
 
 .cover::after {
     content: "";
@@ -615,8 +609,8 @@ button:hover {
 }
 
 .background {
-    /* display: block;
-    position: absolute; */
+    display: none;
+    /* position: absolute; */
 
     position: relative;
 
@@ -629,7 +623,7 @@ button:hover {
 }   
 
 .background-mobile {
-    display: none;
+    display: block;
     /* position: absolute; */
 
     /* width: 100vw; */
@@ -751,25 +745,113 @@ input:focus-visible {
 
 /* ————————————— adaptive version ————————————— */
 
-@media (max-width: 900px) {
-
-    main {
-        /* margin: 0; 
-        width: 100%;
-        height: 122vh; */
+@media  (min-width: 900px)  {
+    .logo   {
+        width:  11.6em;
     }
 
-    header {
-        /* width: 100%;
+    .cover-text {
+        font-size:  2.5em;
+        margin: 0   51svw   2svw    2svw;
+        letter-spacing: 3%;
+
+
+    }
+
+    header  {
+        padding:    1svw;
+    }
+
+    h2  {
+       font-size:   18vw; 
+    }
+
+    h4  {
+        font-size:  12.5em;
+    }
+
+    h5  {
+        font-size:  5em;
+    }
+
+    h6  {
+        font-size:  1.9em;
+    }
+
+    .decision   video {
+        width:  40vw;
+        margin-top: -40svw;
+
+    }  
+
+    .decision   {
+        padding:    100px   0   12svw   0;
+    }
+
+    .decision h5    {
+        margin: 0   0   0   2svw;
+        width:  50%;
+    }
+
+    .p-frame    {
+        justify-content:    center;
+    }
+
+    .cover-2 hgroup {
+        margin: 0   20svw;
+    }
+
+    p {
+        font-size: 2em;
+    }
+
+    .schedule {
+
         display: flex;
-        justify-content: flex-end;
-        padding: 20px 20px 0 0; */
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 10svw;
+
     }
 
-    .logo {
-        /* width: 25vw; */
+    .schedule svg {
+        width: 40svw;
     }
+
+    .background { 
+       display: block; 
+    }
+
+    .background-mobile { 
+       display: none; 
+    }
+
+    .button-sticky  {
+        width:  fit-content;
+        top:    0;
+        right:  0;
+    }
+
+    .cover  button  {
+        width:  fit-content;
+    }
+
+}
+
+
+
+
+@media (min-width: 500px) and (max-width: 900px) {
+    .email-form {
+        width: 350px;
+        margin: 0 auto 15px auto; 
+    }
+
+
     
+}
+
+@media (max-width: 900px) {
     .email-form {
         width: auto;
         margin: 0 15px 15px 15px; 
@@ -789,117 +871,7 @@ input:focus-visible {
         font-size: 1em; 
     }
 
-    .background { 
-       display: none; 
-    }
 
-    .background-mobile { 
-       display: block; 
-    }
-
-    canvas {
-        display: none;
-    }
-}
-
-@media (min-width: 900px) {
-    .logo {
-        width: 11.6em;
-    }
-
-    .cover {
-            /* flex-direction: column-reverse; */
-            /* background-position: 0 -16svw; */
-
-    }
-    .cover-text {
-        font-size: 2.5em;
-        margin: 0 51svw 2svw 2svw;
-        letter-spacing: 3%;
-
-
-    }
-
-    header {
-        padding: 1svw;
-    }
-
-    h2 {
-       font-size: 18vw; 
-    }
-
-    h4 {
-        font-size: 12.5em;
-    }
-
-    h5 {
-        font-size: 7em;
-    }
-
-    h6 {
-            font-size: 1.9em;
-    }
-
-    .decision video {
-        width: 40vw;
-        margin-top: -46svw;
-
-    }  
-
-    .decision {
-        padding: 100px 0 12svw 0;
-    }
-
-    .decision h5 {
-    margin: 0 26svw 0 2svw;
-    }
-
-    .p-frame {
-        justify-content: center;
-    }
-
-    .cover-2 hgroup {
-        margin: 0 20svw;
-    }
-
-    p {
-        font-size: 2em;
-    }
-
-    .schedule {
-
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin: 0 10svw;
-
-    }
-
-    .schedule svg {
-        width: 40svw;
-    }
-}
-
-
-
-
-
-
-
-@media (min-width: 1500px) {
- 
-}
-
-@media (min-width: 500px) and (max-width: 900px) {
-    .email-form {
-        width: 350px;
-        margin: 0 auto 15px auto; 
-    }
-
-    main {
-        /* height: 128vh; */
-    }
-    
 }
 
 
@@ -908,3 +880,11 @@ input:focus-visible {
 
 /* ————————————— archive ————————————— */
 
+/* @media (min-width: 1500px) {
+ 
+} */
+
+    /* .cover  {
+        flex-direction: column-reverse;
+        background-position: 0 -16svw;
+    } */
