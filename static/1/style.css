@@ -236,12 +236,7 @@ h6 {
     -webkit-box-decoration-break: clone; */
 }
 
-.cover-text {
-    font-size: 1.3em;
-    font-weight: 100;
-    text-transform: lowercase;
-    margin: 0 18svw 10svw 3svw ;
-}
+
 
 span {
     font-family: "Varp";
@@ -334,6 +329,47 @@ figure {
 figcaption {
         margin: 0 11svw 0 0;
 
+}
+
+button {
+    border: none;
+    /* width: auto; */
+    padding: 10px 20px; 
+    border-radius: 100px;
+    text-wrap: nowrap;
+
+
+    font-size: 1em; 
+    background-color: transparent;
+    border: 1px solid black;
+}
+
+
+
+.button-sticky {
+    position: sticky;
+    bottom: 3svw;
+    color: black;
+    background-color: white;
+    margin: 3svw;
+    z-index: 3;
+
+    transform: translateY(120px);
+    opacity: 0;
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
+}
+
+.button-sticky.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
 }
 
 /* ————————————— castom class ————————————— */
@@ -467,6 +503,9 @@ figcaption {
     margin: 10px;
 }
 
+
+
+
 /* ————————————— margins ————————————— */
 .margin-200 {
     margin: 200px 0 0 0;
@@ -490,6 +529,9 @@ figcaption {
     position: relative;
     z-index: 1;
 
+    padding: 0 3svw 10svw 3svw;
+    gap: 3svw;
+
     height: 100svh;
     width: 100%;
     background-image: url("media/cover-background-image.webp");
@@ -497,6 +539,18 @@ figcaption {
     background-position: center;
     background-repeat: no-repeat;
     color: white;
+}
+
+.cover h6{
+    font-size: 1.3em;
+    font-weight: 100;
+    text-transform: lowercase;
+    /* margin: 0 18svw 10svw 3svw ; */
+}
+
+.cover button {
+    color: #ffffff;
+    border: 1px solid white;
 }
 
 .cover::after {

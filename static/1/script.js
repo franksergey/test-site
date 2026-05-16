@@ -21,3 +21,22 @@ window.addEventListener("scroll", () => {
     });
 
 });
+
+const trigger = document.querySelector(".decision");
+const button = document.querySelector(".button-sticky");
+
+window.addEventListener("scroll", () => {
+
+    const triggerTop = trigger.getBoundingClientRect().top;
+
+    if (triggerTop < window.innerHeight * 0.8) {
+
+        button.classList.add("visible");
+
+    } else {
+
+        button.classList.remove("visible");
+
+    }
+
+});
