@@ -323,6 +323,10 @@ figcaption {
 
 }
 
+section {
+    width: 100svw;
+}
+
 button {
     border: none;
     width: 100%;
@@ -342,16 +346,16 @@ button {
 }
 
 .button-sticky {
-    position: sticky;
-    width: auto;
-    bottom: 3svw;
-    color: white;
+    position:   fixed;
+    width:      88svw;
+    bottom:     0;
+    color:    white;
     background-color: black;
-    margin: 3svw 6svw;
-    z-index: 3;
+    margin:     3svw    6svw;
+    z-index:    3;
 
-    transform: translateY(120px);
-    opacity: 0;
+    transform:  translateY(120px);
+    opacity:    0;
 
     transition:
         transform 0.5s ease,
@@ -747,12 +751,12 @@ input:focus-visible {
 
 @media  (min-width: 900px)  {
     .logo   {
-        width:  11.6em;
+        width:      11.6em;
     }
 
     .cover-text {
         font-size:  2.5em;
-        margin: 0   51svw   2svw    2svw;
+        margin:     0   51svw   2svw    2svw;
         letter-spacing: 3%;
 
 
@@ -779,7 +783,7 @@ input:focus-visible {
     }
 
     .decision   video {
-        width:  40vw;
+        width:      40vw;
         margin-top: -40svw;
 
     }  
@@ -789,8 +793,8 @@ input:focus-visible {
     }
 
     .decision h5    {
-        margin: 0   0   0   2svw;
-        width:  50%;
+        margin:     0   0   0   2svw;
+        width:      50%;
     }
 
     .p-frame    {
@@ -798,7 +802,7 @@ input:focus-visible {
     }
 
     .cover-2 hgroup {
-        margin: 0   20svw;
+        margin:     0   20svw;
     }
 
     p {
@@ -825,11 +829,16 @@ input:focus-visible {
     .background-mobile { 
        display: none; 
     }
+    
 
     .button-sticky  {
         width:  fit-content;
-        top:    0;
-        right:  0;
+        top:    2svw;
+        right:  2svw;
+        bottom: auto;
+        margin: 0;
+
+        transform: translateY(-120px);
     }
 
     .cover  button  {
