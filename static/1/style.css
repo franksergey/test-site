@@ -68,10 +68,7 @@ hgroup  p    {
 
 
 
-.space hgroup {
-    text-align: left;
-    margin: 0 20px;
-}
+
 
 h1 {
     font-size: 3em;
@@ -490,18 +487,8 @@ button:hover {
     /* height: 100vh; */
 }
 
-.space {
-    background-image:   url("media/ellipse.svg");
-    background-size:    200vw;
-    background-position: -100vw 100px;
-    background-repeat:  no-repeat; 
-}
 
 
-.space img {
-    width: 90svw;
-    margin: 10px;
-}
 
 
 
@@ -648,16 +635,59 @@ button:hover {
     height: 100%;
 }
 
+.space {
+    background-image:   url("media/ellipse.svg");
+    background-size:    200vw;
+    background-position: -100vw 100px;
+    background-repeat:  no-repeat;
+    
+    & img {
+        width: 90svw;
+        margin: 10px;
+
+        @media  (min-width: 900px)  {   
+        margin: 2svw;
+        }
+    }
+
+    & hgroup {
+        text-align: left;
+        margin: 0 20px;
+
+        @media  (min-width: 900px)  {   
+            width:  40%;
+            margin: 5svw;
+        }
+
+        & h4 {
+            margin: 2svw;
+        }
+    }
+}
+
+
 .headliners {  
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;         
+    padding: 0;
 
-
-    --gap: 0.5em;
+    --gap: 1em;
     --columns: 1;
     --gap-number: calc(var(--columns) - 1);
     gap: var(--gap);
 
+    background-image:   url("media/ellipse.svg");
+    background-size:    0;
+    background-position: -100vw 100px;
+    background-repeat:  no-repeat; 
+
+    & .empty {
+        display: none;
+
+        @media  (min-width: 900px)  {   
+            display: block;
+        }
+    }
 
     & figure {
         width: calc((100% - var(--gap-number) * var(--gap)) / (var(--columns)));
@@ -668,15 +698,41 @@ button:hover {
             height: 105svw;
             object-fit: cover;
         }
-        
-        & h6 {
-            margin: 3svw 0 2svw 0;
+
+        @media  (min-width: 900px)  {   
+            & img {
+                height: 30svw;
+            }
         }
+
+        & figcaption {
+            padding: 3svw 3svw 11svw;
+            
+            & h6 {
+                margin: 0 0 2svw 0;
+                @media  (min-width: 900px)  {
+                margin: 0 0 0.5svw 0;
+                }
+
+            }
+            @media  (min-width: 900px)  {   
+            padding: 0;
+            }
+        } 
     }
 
     @media  (min-width: 900px)  {   
-     --columns: 5;
+     --columns: 4;
+    padding: 2svw;
 
+    background-image:   url("media/ellipse.svg");
+    background-size:    84vw;
+    background-position: 56vw 0;
+    background-repeat:  no-repeat; 
+
+        & .empty {
+            display: block;
+        }
     }
 }
 
@@ -813,7 +869,7 @@ input:focus-visible {
     }
 
     h6  {
-        font-size:  1.9em;
+        font-size:  1.7em;
     }
 
     .decision   video {
@@ -977,14 +1033,7 @@ input:focus-visible {
         margin: 1svw   0;
     }
 
-    .space  hgroup  {
-        width:  40%;
-        margin: 5svw;
-    }
 
-    .space  h4  {
-        margin: 2svw;
-    }
 }
 
 
