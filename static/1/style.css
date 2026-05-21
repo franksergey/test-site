@@ -683,15 +683,16 @@ button:hover {
     background-size:    200vw;
     background-position: -100vw 78svw;
     background-repeat:  no-repeat;
-    
-    & img {
+    position: relative;
+
+    /* & img {
         width: 90svw;
         margin: 2svw 0 10svw 2svw;
 
         @media  (min-width: 900px)  {   
         margin: 2svw;
         }
-    }
+    } */
 
     & hgroup {
         width: 80%;
@@ -709,6 +710,9 @@ button:hover {
     }
 }
 
+#collage-photo-1 {
+
+}
 
 .headliners {  
     display: flex;
@@ -992,7 +996,7 @@ input:focus-visible {
     .cover  h6  {
         font-size:  2em;
         margin:     0   0   1svw    0;
-        width: ;
+        /* width: ; */
     }
 
 
