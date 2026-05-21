@@ -76,9 +76,9 @@ h1 {
 
 h2 {
     font-family: "Varp";
-    font-size: 40vw;
+    font-size: 33vw;
     font-weight: normal;
-    text-align: center;
+    /* text-align: center; */
     font-variation-settings: "slnt" 0, "wdth" 6;
     text-transform: uppercase;
     margin: 0;
@@ -173,7 +173,7 @@ h3 {
 
 h4 {
     font-family: "Varp";
-    font-size: 4.5em;
+    font-size: 4em;
     font-weight: normal;
     /* text-align: center; */
     font-variation-settings: "slnt" 30, "wdth" 55;
@@ -419,11 +419,18 @@ button:hover {
     background-size:    160vw;
     background-position: 140px 0;
     background-repeat:  no-repeat; 
+
+    & h2 {
+        font-size: 40svw;
+        text-align: center;
+        z-index: 1;
+
+        @media  (min-width: 900px)  {  
+            font-size:   18vw;  
+        }
+    }
 }
 
-.kodex h2 {
-    z-index: 1;
-}
 
 /* .kodex svg {
     /* position: absolute; 
@@ -552,9 +559,7 @@ button:hover {
         transparent 25%);
 }
 
-.cover-2    {
-    height: 100svh;
-}
+
 
 .client-pain {
     height: 350vh;
@@ -599,9 +604,7 @@ button:hover {
     margin-top: -5px;
 }
 
-.face-control {
- margin: 150px 0;
-}
+
 
 .background {
     display: none;
@@ -635,15 +638,55 @@ button:hover {
     height: 100%;
 }
 
+.hgroup-padding {
+
+        padding: 5svw 3svw;
+}
+
+/* .cover-2 {
+    height: 100svh;
+    padding: 20svw 0;
+
+    & h2 {
+        font-size: 32vw;
+        text-align: left;
+        padding: 5svw;
+    }
+
+    @media (min-width: 900px) {  
+        margin: 10svw 0;
+
+        & hgroup {
+            margin: 0 20svw;
+        }
+    }
+} */
+
+.face-control {
+ margin: 150px 0;
+    & .p-frame{
+        text-align: left;
+        flex-direction: column;
+        gap: 1em;
+
+        @media  (min-width: 900px)  {  
+            margin: 4svw 32svw;
+            flex-direction: row;
+            align-items: baseline;
+        }
+    }
+ 
+}
+
 .space {
     background-image:   url("media/ellipse.svg");
     background-size:    200vw;
-    background-position: -100vw 100px;
+    background-position: -100vw 78svw;
     background-repeat:  no-repeat;
     
     & img {
         width: 90svw;
-        margin: 10px;
+        margin: 2svw 0 10svw 2svw;
 
         @media  (min-width: 900px)  {   
         margin: 2svw;
@@ -651,8 +694,9 @@ button:hover {
     }
 
     & hgroup {
+        width: 80%;
         text-align: left;
-        margin: 0 20px;
+        margin: 0 3svw;
 
         @media  (min-width: 900px)  {   
             width:  40%;
@@ -893,13 +937,6 @@ input:focus-visible {
         justify-content:    center;
     }
 
-    .face-control   .p-frame    {
-        margin:     4svw    32svw;
-    }
-
-    .cover-2 hgroup {
-        margin:     0   20svw;
-    }
 
     .cover  {
         padding:     0   3svw    4svw    3svw;
@@ -958,15 +995,13 @@ input:focus-visible {
         width: ;
     }
 
-    .cover-2    {
-        margin:     10svw   0;
-    }
 
 
 
+/* 
     hgroup  p   {
         margin: 0;
-    }
+    } */
 
     .timeline   {
         gap:    30svw;
