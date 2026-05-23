@@ -381,8 +381,8 @@ button:hover {
 
 .schedule svg {
     display: block;
-    margin: 50px 20px 0 20px ;
-    /* width: 85vw; */
+    padding: 0 3svw 5svw 3svw ;
+    width: 98%;
 }  
 
 /* .kodex {
