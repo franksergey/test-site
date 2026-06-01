@@ -337,13 +337,34 @@ button {
     border: 1px solid black;
 }
 
+footer {
+    height: 50svh;
+    color: white;
+    background-color: black;
+
+    & .button {
+        border: none;
+        width: 100%;
+        padding: 10px 20px; 
+        border-radius: 100px;
+        text-wrap: nowrap;
+
+        font-family: 'Inter', sans-serif;
+        font-size: 1em; 
+        background-color: transparent;
+        border: 1px solid white;
+    }
+}
+
+
+
 .cover button {
     color: #ffffff;
     border: 1px solid white;
 }
 
 .button-sticky {
-    position:   fixed;
+    position:   sticky;
     width:      88svw;
     bottom:     0;
     color:    white;
