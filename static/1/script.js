@@ -1,6 +1,10 @@
 const story = document.querySelector(".client-pain");
 const texts = document.querySelectorAll(".p-accent");
 
+const trigger = document.querySelector(".decision");
+const button = document.querySelector(".button-sticky");
+const footer = document.querySelector("footer");
+
 window.addEventListener("scroll", () => {
 
     const rect = story.getBoundingClientRect();
@@ -20,23 +24,17 @@ window.addEventListener("scroll", () => {
         text.classList.toggle("p-active", i === index);
     });
 
-});
-
-const trigger = document.querySelector(".decision");
-const button = document.querySelector(".button-sticky");
-
-window.addEventListener("scroll", () => {
 
     const triggerTop = trigger.getBoundingClientRect().top;
+    const footerTop = footer.getBoundingClientRect().top;
 
-    if (triggerTop < window.innerHeight * 0.8) {
-
+    if (
+        triggerTop < window.innerHeight * 0.8 &&
+        footerTop > window.innerHeight
+    ) {
         button.classList.add("visible");
-
     } else {
-
         button.classList.remove("visible");
-
     }
 
 });

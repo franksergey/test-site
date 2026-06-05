@@ -337,25 +337,86 @@ button {
     border: 1px solid black;
 }
 
+
+
+
 footer {
-    height: 50svh;
     color: white;
     background-color: black;
+    padding: 12svw 6svw 24svw 6svw;
+    display: flex;
+    flex-direction: column;
+    gap: 15svw;
 
-    & .button {
-        border: none;
-        width: 100%;
-        padding: 10px 20px; 
-        border-radius: 100px;
+    @media  (min-width: 900px)  {
+        padding: 6svw 6svw 12svw 6svw;   
+        display: flex;
+        flex-direction: row;
+    }
+
+    & p {
+        font-size: 0.9em;
+        color: rgba(255, 255, 255, 0.7);
+
+        @media  (min-width: 900px)  {
+            font-size: 1.5em;
+        }
+    }
+
+    & .logo {
+        width: 8em;
+        margin: 0 0 2svw 0;
+    }
+
+    & a {
+        text-decoration: underline;
         text-wrap: nowrap;
+        display: inline;
+        padding: 0;
 
-        font-family: 'Inter', sans-serif;
-        font-size: 1em; 
-        background-color: transparent;
-        border: 1px solid white;
+        color: white;
+    }
+
+    & div {
+        display: flex;
+        flex-direction: column;
+        gap: 15svw;
+
+        & p {
+            @media  (min-width: 900px)  {
+                font-size: 1em;
+            }
+        }
+
+        @media  (min-width: 900px)  {
+            gap: 5svw;
+        }
+    }
+
+    & hgroup {
+        @media  (min-width: 900px)  {
+            width: 25%;
+        }    
     }
 }
 
+.footer-link {
+    width: fit-content;
+    display: inline-block;
+    padding: 5px 10px;     
+    border-radius: 100px;
+    text-wrap: nowrap;
+    text-decoration: none;
+
+
+    background-color: transparent;
+    border: 1px solid white; 
+    margin: 2svw 0 0 0;  
+
+    @media  (min-width: 900px)  {
+        margin: 0.5svw 0 0 0;
+    }
+}
 
 
 .cover button {
@@ -364,7 +425,7 @@ footer {
 }
 
 .button-sticky {
-    position:   sticky;
+    position:   fixed;
     width:      88svw;
     bottom:     0;
     color:    white;
@@ -400,10 +461,18 @@ button:hover {
     width: 6.3em;
 }
 
-.schedule svg {
-    display: block;
-    padding: 0 3svw 5svw 3svw ;
-    width: 98%;
+.schedule {
+
+    & p {
+        padding: 0 3svw;
+    }
+
+
+    & svg {
+        display: block;
+        padding: 0 3svw 5svw 3svw ;
+        width: 98%;
+    }
 }  
 
 /* .kodex {
@@ -463,7 +532,7 @@ button:hover {
 
 .project-history {
     background-color: #ffffff;
-    padding: 35svw 6svw 60svw 6svw;
+    padding: 35svw 6svw 35svw 6svw;
 
     & hgroup {
         @media  (min-width: 900px)  {  
