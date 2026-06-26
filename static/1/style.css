@@ -325,7 +325,7 @@ section {
 }
 
 button {
-    border: none !important;
+    /* border: none !important; */
     width: 100%;
     padding: 10px 20px; 
     border-radius: 100px;
@@ -334,11 +334,11 @@ button {
 
     font-size: 1em; 
     background-color: transparent;
-    border: 1px solid black;
+    border: 2px solid black;
     cursor: pointer;
 }
 
-button[data-tc-event] {
+/* button[data-tc-event] {
 
     border: none !important;
     padding: 0 20px !important; 
@@ -353,7 +353,7 @@ button[data-tc-event] {
     text-shadow: none !important;
 
 
-}
+} */
 
 
 footer {
